@@ -31,17 +31,16 @@ services:
       - JAVA_OPT_EXT=-Xms512M -Xmx512M -Xmn128m
     command: sh mqbroker -n namesrv:9876 -c /home/rocketmq/conf/broker.conf
     depends_on:
-      namesrv:
-        condition: service_healthy
+      - namesrv
     volumes:
       - ./docker/rocketmq/broker.conf:/home/rocketmq/conf/broker.conf
     networks:
       - rocketmq-network
     healthcheck:
-      test: ["CMD-SHELL", "timeout 5 bash -c ':> /dev/tcp/127.0.0.1/10911' || exit 1"]
+      test: ["CMD-SHELL", "ps aux | grep mqbroker | grep -v grep || exit 1"]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 10
 
   # Optional: RocketMQ Console (Web UI)
   console:
@@ -94,18 +93,16 @@ services:
       - ROCKETMQ_NAME_SERVER=namesrv:9876
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
-      namesrv:
-        condition: service_healthy
-      broker:
-        condition: service_healthy
+      - namesrv
+      - broker
     networks:
       - rocketmq-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 10s
       timeout: 5s
-      retries: 5
-      start_period: 30s
+      retries: 10
+      start_period: 60s
 
 networks:
   rocketmq-network:

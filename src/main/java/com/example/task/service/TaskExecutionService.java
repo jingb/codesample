@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -18,8 +17,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 @Component
 public class TaskExecutionService {
-
-    private final Random random = new Random();
 
     @Value("${task.processing.duration-seconds:10}")
     private int taskDurationSeconds;
@@ -35,13 +32,7 @@ public class TaskExecutionService {
         log.info("Task started: taskId={}, taskType={}, activeTasks={}", task.getId(), task.getTaskType(), currentActive);
 
         try {
-            // Simulate long-running task
-            Map<String, Object> result = switch (task.getTaskType()) {
-                case "DATA_EXPORT" -> handleDataExport(task);
-                case "DATA_IMPORT" -> handleDataImport(task);
-                case "REPORT_GENERATION" -> handleReportGeneration(task);
-                default -> handleUnknownTask(task);
-            };
+            Map<String, Object> result = handleDataExport(task);
 
             log.info("Task executed successfully: taskId={}, activeTasks={}", task.getId(), activeTasks.decrementAndGet());
             return result;
@@ -86,59 +77,4 @@ public class TaskExecutionService {
         return result;
     }
 
-    /**
-     * Handle data import task
-     */
-    private Map<String, Object> handleDataImport(Task task) {
-        log.info("Handling data import: taskId={}", task.getId());
-
-        // Simulate import work
-        simulateWork(3);
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("importedCount", 5000);
-        result.put("skippedCount", 10);
-
-        return result;
-    }
-
-    /**
-     * Handle report generation task
-     */
-    private Map<String, Object> handleReportGeneration(Task task) {
-        log.info("Handling report generation: taskId={}", task.getId());
-
-        // Simulate report generation
-        simulateWork(5);
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("reportUrl", "/reports/" + task.getId() + ".pdf");
-        result.put("pageCount", 25);
-
-        return result;
-    }
-
-    /**
-     * Handle unknown task type
-     */
-    private Map<String, Object> handleUnknownTask(Task task) {
-        log.warn("Unknown task type: taskId={}, taskType={}", task.getId(), task.getTaskType());
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("message", "Unknown task type: " + task.getTaskType());
-
-        return result;
-    }
-
-    /**
-     * Simulate work with random duration
-     */
-    private void simulateWork(int seconds) {
-        try {
-            Thread.sleep(seconds * 1000L);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Task interrupted", e);
-        }
-    }
 }

@@ -5,11 +5,25 @@ spring:
   application:
     name: task-async-service
 
-  # datasource:
-  #   url: jdbc:mysql://localhost:3306/task_db?useSSL=false&serverTimezone=UTC
-  #   username: task_user
-  #   password: task_pass
-  #   driver-class-name: com.mysql.cj.jdbc.Driver
+  datasource:
+    url: jdbc:mysql://mysql:3306/task_db?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: task_user
+    password: task_pass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: none  # Use init.sql instead of auto-generation
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        jdbc:
+          time_zone: Asia/Shanghai
 
 # RocketMQ Configuration (Docker environment - app runs in container)
 rocketmq:

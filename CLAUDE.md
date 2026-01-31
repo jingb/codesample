@@ -41,21 +41,21 @@ java -jar target/task-async-service-1.0.0.jar --spring.profiles.active=docker
 ### Docker Environment (for RocketMQ dependencies)
 ```bash
 # Start all dependencies (RocketMQ + MySQL)
-./docker-start.sh
+./scripts/docker/docker-start.sh
 # or
 docker-compose up -d
 
 # Start complete environment (Docker + app)
-./run-all.sh
+./scripts/docker/run-all.sh
 
 # Stop Docker services
-./docker-stop.sh
+./scripts/docker/docker-stop.sh
 # or
 docker-compose down
 
 # Check service status
 docker-compose ps
-./docker-check.sh
+./scripts/docker/docker-check.sh
 
 # View logs
 docker-compose logs -f
@@ -65,16 +65,16 @@ docker-compose logs -f broker  # specific service
 ### Testing and Monitoring
 ```bash
 # Stress test (100 tasks, 10 threads)
-./stress-test.sh
+./scripts/testing/stress-test.sh
 
 # Monitor consumption
-./monitor-consumption.sh
+./scripts/monitoring/monitor-consumption.sh
 
 # Verify RocketMQ stats
-./verify-rocketmq-stats.sh
+./scripts/monitoring/verify-rocketmq-stats.sh
 
 # Analyze logs
-./analyze-logs.sh
+./scripts/testing/analyze-logs.sh
 ```
 
 ### API Testing
@@ -240,11 +240,18 @@ Web UI available at `http://localhost:8081` when using Docker Compose. View:
 
 ## Development Workflow
 
-1. Start dependencies: `./docker-start.sh` (wait 15 seconds for services)
+1. Start dependencies: `./scripts/docker/docker-start.sh` (wait 15 seconds for services)
 2. Build application: `mvn clean package`
 3. Run application: `mvn spring-boot:run -Dspring-boot.run.profiles=docker`
 4. Test: `curl -X POST http://localhost:8080/tasks ...`
 5. Monitor: `docker-compose logs -f` or access Console at http://localhost:8081
+
+## Additional Documentation
+
+- **[Development Guide](docs/DEVELOPMENT.md)** - Detailed development environment setup
+- **[Testing Guide](docs/TESTING.md)** - Stress testing and performance analysis
+- **[Architecture](docs/ARCHITECTURE.md)** - System architecture and component details
+- **[Scripts Reference](docs/SCRIPTS.md)** - All scripts documentation
 
 ---
 

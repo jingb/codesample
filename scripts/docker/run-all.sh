@@ -5,8 +5,10 @@
 
 set -e
 
+# Get the project root directory (two levels up from this script)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+cd "$PROJECT_ROOT"
 
 echo "========================================="
 echo "🚀 Starting Complete Environment"
@@ -15,7 +17,7 @@ echo "========================================="
 # Step 1: Start Docker services
 echo ""
 echo "[1/3] Starting Docker services (RocketMQ + MySQL)..."
-./docker-start.sh
+./scripts/docker/docker-start.sh
 
 # Step 2: Rebuild application (if needed)
 echo ""

@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: task-async-service
+
+  # datasource:
+  #   url: jdbc:mysql://localhost:3306/task_db?useSSL=false&serverTimezone=UTC
+  #   username: task_user
+  #   password: task_pass
+  #   driver-class-name: com.mysql.cj.jdbc.Driver
+
+# RocketMQ Configuration (Docker environment - app runs in container)
+rocketmq:
+  name-server: namesrv:9876  # Connect to Docker container by name
+  producer:
+    group: task-producer-group
+  consumer:
+    group: task-consumer-group
+    topic: task-topic
+    tag: "*"
+    consume-thread-min: 10
+    consume-thread-max: 10
+    message-consume-timeout: 30  # minutes
+
+# Task Processing Configuration
+task:
+  processing:
+    max-concurrent-tasks: 10
+    timeout-minutes: 30
+    retry-times: 3
+    duration-seconds: 10  # Simulated task execution duration for testing
+
+# Logging
+logging:
+  level:
+    com.example.task: INFO
+    org.apache.rocketmq: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

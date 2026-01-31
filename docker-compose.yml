@@ -1,0 +1,115 @@
+version: '3.8'
+
+services:
+  # RocketMQ NameServer
+  namesrv:
+    image: apache/rocketmq:5.3.0
+    container_name: rocketmq-namesrv
+    ports:
+      - 9876:9876
+    environment:
+      - JAVA_OPT_EXT=-Xms512M -Xmx512M -Xmn128m
+    command: sh mqnamesrv
+    networks:
+      - rocketmq-network
+    healthcheck:
+      test: ["CMD-SHELL", "timeout 5 bash -c ':> /dev/tcp/127.0.0.1/9876' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # RocketMQ Broker
+  broker:
+    image: apache/rocketmq:5.3.0
+    container_name: rocketmq-broker
+    ports:
+      - 10909:10909
+      - 10911:10911
+      - 10912:10912
+    environment:
+      - NAMESRV_ADDR=namesrv:9876
+      - JAVA_OPT_EXT=-Xms512M -Xmx512M -Xmn128m
+    command: sh mqbroker -n namesrv:9876 -c /home/rocketmq/conf/broker.conf
+    depends_on:
+      namesrv:
+        condition: service_healthy
+    volumes:
+      - ./docker/rocketmq/broker.conf:/home/rocketmq/conf/broker.conf
+    networks:
+      - rocketmq-network
+    healthcheck:
+      test: ["CMD-SHELL", "timeout 5 bash -c ':> /dev/tcp/127.0.0.1/10911' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Optional: RocketMQ Console (Web UI)
+  console:
+    image: apacherocketmq/rocketmq-dashboard:2.0.0
+    container_name: rocketmq-console
+    ports:
+      - 8081:8080
+    environment:
+      - JAVA_OPTS=-Xmx256M -Xms256M -Xmn128M -Drocketmq.config.isVIPChannel=false
+      - rocketmq.config.namesrvAddr=namesrv:9876
+      - rocketmq.config.isVIPChannel=false
+      - rocketmq.config.useLoginPassword=false
+    depends_on:
+      - namesrv
+      - broker
+    networks:
+      - rocketmq-network
+
+  # Optional: MySQL Database (for future use)
+  mysql:
+    image: mysql:8.0
+    container_name: task-mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_DATABASE=task_db
+      - MYSQL_USER=task_user
+      - MYSQL_PASSWORD=task_pass
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - rocketmq-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot123"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Spring Boot Application (rebuilds on code changes)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: task-app
+    ports:
+      - 8080:8080
+    environment:
+      - ROCKETMQ_NAME_SERVER=namesrv:9876
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      namesrv:
+        condition: service_healthy
+      broker:
+        condition: service_healthy
+    networks:
+      - rocketmq-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks:
+  rocketmq-network:
+    driver: bridge
+
+volumes:
+  mysql-data:

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-02-01T00:00:00.000Z" agent="Claude Code" version="24.0.0">
+  <diagram name="请求流程概览" id="request-flow-overview">
+    <mxGraphModel dx="1430" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- 节点 1: 客户端 -->
+        <mxCell id="node-client" value="客户端" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6600CC;strokeColor=#6600CC;fontColor=#FFFFFF;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 节点 2: REST API -->
+        <mxCell id="node-rest-api" value="REST API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0066CC;strokeColor=#0066CC;fontColor=#FFFFFF;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 节点 3: TaskService -->
+        <mxCell id="node-task-service" value="TaskService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0099CC;strokeColor=#0099CC;fontColor=#FFFFFF;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 节点 4: RocketMQ -->
+        <mxCell id="node-rocketmq" value="RocketMQ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6600;strokeColor=#FF6600;fontColor=#FFFFFF;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 节点 5: 消费者 -->
+        <mxCell id="node-consumer" value="消费者" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#009900;strokeColor=#009900;fontColor=#FFFFFF;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 节点 6: TaskExecutionService -->
+        <mxCell id="node-execution" value="TaskExecutionService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CC6600;strokeColor=#CC6600;fontColor=#FFFFFF;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="40" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 连线 1: 客户端 → REST API -->
+        <mxCell id="edge-1" value="POST /tasks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="node-client" target="node-rest-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 连线 2: REST API → TaskService -->
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="node-rest-api" target="node-task-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 连线 3: TaskService → RocketMQ -->
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="node-task-service" target="node-rocketmq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 连线 4: RocketMQ → 消费者 -->
+        <mxCell id="edge-4" value="固定 10 线程" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="node-rocketmq" target="node-consumer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 连线 5: 消费者 → TaskExecutionService -->
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="node-consumer" target="node-execution">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 连线 6: TaskService → 客户端 (返回路径) -->
+        <mxCell id="edge-6" value="返回 taskId" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=10;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="node-task-service" target="node-client">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

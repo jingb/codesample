@@ -1,0 +1,1120 @@
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-01-31 07:38:56 [main] INFO  c.e.task.TaskAsyncServiceApplication - Starting TaskAsyncServiceApplication v1.0.0 using Java 17.0.17 with PID 1 (/app/app.jar started by root in /app)
+2026-01-31 07:38:56 [main] INFO  c.e.task.TaskAsyncServiceApplication - The following 1 profile is active: "docker"
+2026-01-31 07:38:57 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-31 07:38:57 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53 ms. Found 1 JPA repository interface.
+2026-01-31 07:38:57 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-01-31 07:38:57 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-31 07:38:57 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-01-31 07:38:58 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-01-31 07:38:58 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1262 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-01-31 07:38:58 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-31 07:38:58 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-01-31 07:38:58 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-01-31 07:38:58 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-31 07:38:58 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-01-31 07:38:59 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7ef8e623
+2026-01-31 07:38:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-01-31 07:38:59 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-31 07:39:00 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-31 07:39:00 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-31 07:39:00 [main] INFO  c.example.task.config.RocketMQConfig - Initializing RocketMQ producer: group=task-producer-group, nameserver=namesrv:9876
+2026-01-31 07:39:01 [main] INFO  c.example.task.config.RocketMQConfig - RocketMQ producer started successfully
+2026-01-31 07:39:02 [main] INFO  c.example.task.consumer.TaskConsumer - Initializing TaskConsumer...
+2026-01-31 07:39:02 [main] INFO  c.example.task.consumer.TaskConsumer - TaskConsumer started successfully: group=task-consumer-group, topic=task-topic, threads=[10, 10]
+2026-01-31 07:39:02 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-31 07:39:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-01-31 07:39:02 [main] INFO  c.e.task.TaskAsyncServiceApplication - Started TaskAsyncServiceApplication in 6.496 seconds (process running for 6.932)
+2026-01-31 07:39:06 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-31 07:39:06 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-01-31 07:39:06 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2026-01-31 07:39:26 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_IMPORT
+2026-01-31 07:39:26 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810, taskType=DATA_IMPORT
+2026-01-31 07:39:26 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810
+2026-01-31 07:39:26 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810, retryCount=0, msgId=C0A8A00500015305068A9C2369370000
+2026-01-31 07:39:26 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810
+2026-01-31 07:39:26 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810, taskType=DATA_IMPORT, activeTasks=1
+2026-01-31 07:39:26 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data import: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810
+2026-01-31 07:39:29 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810, activeTasks=0
+2026-01-31 07:39:29 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810
+2026-01-31 07:39:29 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810
+2026-01-31 07:39:52 [http-nio-8080-exec-3] INFO  c.e.task.controller.TaskController - Querying task: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810
+2026-01-31 07:40:25 [SpringApplicationShutdownHook] INFO  c.example.task.consumer.TaskConsumer - Shutting down TaskConsumer...
+2026-01-31 07:40:28 [SpringApplicationShutdownHook] INFO  c.example.task.consumer.TaskConsumer - TaskConsumer shut down successfully
+2026-01-31 07:40:28 [SpringApplicationShutdownHook] INFO  c.example.task.config.RocketMQConfig - Shutting down RocketMQ producer...
+2026-01-31 07:40:28 [SpringApplicationShutdownHook] INFO  c.example.task.config.RocketMQConfig - RocketMQ producer shut down successfully
+2026-01-31 07:40:28 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-31 07:40:28 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-01-31 07:40:28 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-01-31 07:40:30 [main] INFO  c.e.task.TaskAsyncServiceApplication - Starting TaskAsyncServiceApplication v1.0.0 using Java 17.0.17 with PID 1 (/app/app.jar started by root in /app)
+2026-01-31 07:40:30 [main] INFO  c.e.task.TaskAsyncServiceApplication - The following 1 profile is active: "docker"
+2026-01-31 07:40:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-31 07:40:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interface.
+2026-01-31 07:40:31 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-01-31 07:40:31 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-31 07:40:31 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-01-31 07:40:31 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-01-31 07:40:31 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 935 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-01-31 07:40:31 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-31 07:40:31 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-01-31 07:40:31 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-01-31 07:40:32 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-31 07:40:32 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-01-31 07:40:32 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@20a1b3ae
+2026-01-31 07:40:32 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-01-31 07:40:32 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-31 07:40:32 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-31 07:40:32 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-31 07:40:32 [main] INFO  c.example.task.config.RocketMQConfig - Initializing RocketMQ producer: group=task-producer-group, nameserver=namesrv:9876
+2026-01-31 07:40:33 [main] INFO  c.example.task.config.RocketMQConfig - RocketMQ producer started successfully
+2026-01-31 07:40:33 [main] INFO  c.example.task.consumer.TaskConsumer - Initializing TaskConsumer...
+2026-01-31 07:40:33 [main] INFO  c.example.task.consumer.TaskConsumer - TaskConsumer started successfully: group=task-consumer-group, topic=task-topic, threads=[10, 10]
+2026-01-31 07:40:33 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-31 07:40:33 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-01-31 07:40:33 [main] INFO  c.e.task.TaskAsyncServiceApplication - Started TaskAsyncServiceApplication in 3.909 seconds (process running for 4.34)
+2026-01-31 07:40:39 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-31 07:40:39 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-01-31 07:40:39 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-01-31 07:40:47 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Querying task: taskId=fe45b55d-30ab-4f8a-93af-9178b1095810
+2026-01-31 07:40:52 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:40:52 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=caa26262-e0a8-42c1-8cdd-369e00e1be76, taskType=DATA_EXPORT
+2026-01-31 07:40:52 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=caa26262-e0a8-42c1-8cdd-369e00e1be76
+2026-01-31 07:40:52 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=caa26262-e0a8-42c1-8cdd-369e00e1be76, retryCount=0, msgId=C0A8A00500015305068A9C24BA7D0000
+2026-01-31 07:40:52 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=caa26262-e0a8-42c1-8cdd-369e00e1be76
+2026-01-31 07:40:52 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=caa26262-e0a8-42c1-8cdd-369e00e1be76, taskType=DATA_EXPORT, activeTasks=1
+2026-01-31 07:40:52 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=caa26262-e0a8-42c1-8cdd-369e00e1be76, duration=10s
+2026-01-31 07:40:52 [http-nio-8080-exec-9] INFO  c.e.task.controller.TaskController - Received task submission: taskType=REPORT_GENERATION
+2026-01-31 07:40:52 [http-nio-8080-exec-9] INFO  c.example.task.service.TaskService - Task created: taskId=27478af6-a4a4-417e-beab-1fbfa9ac4939, taskType=REPORT_GENERATION
+2026-01-31 07:40:52 [http-nio-8080-exec-9] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=27478af6-a4a4-417e-beab-1fbfa9ac4939
+2026-01-31 07:40:52 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=27478af6-a4a4-417e-beab-1fbfa9ac4939, retryCount=0, msgId=C0A8A00500015305068A9C24BADC0001
+2026-01-31 07:40:52 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=27478af6-a4a4-417e-beab-1fbfa9ac4939
+2026-01-31 07:40:52 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=27478af6-a4a4-417e-beab-1fbfa9ac4939, taskType=REPORT_GENERATION, activeTasks=2
+2026-01-31 07:40:52 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling report generation: taskId=27478af6-a4a4-417e-beab-1fbfa9ac4939
+2026-01-31 07:40:57 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=27478af6-a4a4-417e-beab-1fbfa9ac4939, activeTasks=1
+2026-01-31 07:40:57 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=27478af6-a4a4-417e-beab-1fbfa9ac4939
+2026-01-31 07:40:57 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=27478af6-a4a4-417e-beab-1fbfa9ac4939
+2026-01-31 07:41:02 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=caa26262-e0a8-42c1-8cdd-369e00e1be76, activeTasks=0
+2026-01-31 07:41:02 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=caa26262-e0a8-42c1-8cdd-369e00e1be76
+2026-01-31 07:41:02 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=caa26262-e0a8-42c1-8cdd-369e00e1be76
+2026-01-31 07:41:20 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Querying task: taskId=27478af6-a4a4-417e-beab-1fbfa9ac4939
+2026-01-31 07:43:27 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:27 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=1802a344-2195-4f51-b1ea-e8cbc01cb342, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=1802a344-2195-4f51-b1ea-e8cbc01cb342
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=1802a344-2195-4f51-b1ea-e8cbc01cb342, retryCount=0, msgId=C0A8A00500015305068A9C2718FB0002
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=1802a344-2195-4f51-b1ea-e8cbc01cb342
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=1802a344-2195-4f51-b1ea-e8cbc01cb342, taskType=DATA_EXPORT, activeTasks=1
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=1802a344-2195-4f51-b1ea-e8cbc01cb342, duration=10s
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=3bf9ac4f-63e0-4384-8620-1eb62d99127b, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=3bf9ac4f-63e0-4384-8620-1eb62d99127b
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=3bf9ac4f-63e0-4384-8620-1eb62d99127b, retryCount=0, msgId=C0A8A00500015305068A9C27195F0003
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=3bf9ac4f-63e0-4384-8620-1eb62d99127b
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=3bf9ac4f-63e0-4384-8620-1eb62d99127b, taskType=DATA_EXPORT, activeTasks=2
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=3bf9ac4f-63e0-4384-8620-1eb62d99127b, duration=10s
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=49233bf0-3762-4d02-a48a-e90b982c924b, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=49233bf0-3762-4d02-a48a-e90b982c924b
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=49233bf0-3762-4d02-a48a-e90b982c924b, retryCount=0, msgId=C0A8A00500015305068A9C2719D50004
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=49233bf0-3762-4d02-a48a-e90b982c924b
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=49233bf0-3762-4d02-a48a-e90b982c924b, taskType=DATA_EXPORT, activeTasks=3
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=49233bf0-3762-4d02-a48a-e90b982c924b, duration=10s
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=c7c81486-246b-4306-bc67-0cb36e2b54f9, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=c7c81486-246b-4306-bc67-0cb36e2b54f9
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=c7c81486-246b-4306-bc67-0cb36e2b54f9, retryCount=0, msgId=C0A8A00500015305068A9C271A1A0005
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=c7c81486-246b-4306-bc67-0cb36e2b54f9
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=c7c81486-246b-4306-bc67-0cb36e2b54f9, taskType=DATA_EXPORT, activeTasks=4
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=c7c81486-246b-4306-bc67-0cb36e2b54f9, duration=10s
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task created: taskId=0d40c5cc-89de-4f87-b0e3-1ebd0e2b3ecf, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=0d40c5cc-89de-4f87-b0e3-1ebd0e2b3ecf
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=0d40c5cc-89de-4f87-b0e3-1ebd0e2b3ecf, retryCount=0, msgId=C0A8A00500015305068A9C271A480006
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=0d40c5cc-89de-4f87-b0e3-1ebd0e2b3ecf
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=0d40c5cc-89de-4f87-b0e3-1ebd0e2b3ecf, taskType=DATA_EXPORT, activeTasks=5
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=0d40c5cc-89de-4f87-b0e3-1ebd0e2b3ecf, duration=10s
+2026-01-31 07:43:28 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=8bd4956b-4b7a-465b-a0db-4872c35e52a5, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=8bd4956b-4b7a-465b-a0db-4872c35e52a5
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=8bd4956b-4b7a-465b-a0db-4872c35e52a5, retryCount=0, msgId=C0A8A00500015305068A9C271A780007
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=8bd4956b-4b7a-465b-a0db-4872c35e52a5
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=8bd4956b-4b7a-465b-a0db-4872c35e52a5, taskType=DATA_EXPORT, activeTasks=6
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=8bd4956b-4b7a-465b-a0db-4872c35e52a5, duration=10s
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=2ad8aae9-0651-4920-99bf-88e4bf1f1cb4, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=2ad8aae9-0651-4920-99bf-88e4bf1f1cb4
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=2ad8aae9-0651-4920-99bf-88e4bf1f1cb4, retryCount=0, msgId=C0A8A00500015305068A9C271A9E0008
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=2ad8aae9-0651-4920-99bf-88e4bf1f1cb4
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=2ad8aae9-0651-4920-99bf-88e4bf1f1cb4, taskType=DATA_EXPORT, activeTasks=7
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=2ad8aae9-0651-4920-99bf-88e4bf1f1cb4, duration=10s
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=ca6faa2e-5689-419d-ade0-737bebf87321, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=ca6faa2e-5689-419d-ade0-737bebf87321
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=ca6faa2e-5689-419d-ade0-737bebf87321, retryCount=0, msgId=C0A8A00500015305068A9C271AC60009
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=ca6faa2e-5689-419d-ade0-737bebf87321
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=ca6faa2e-5689-419d-ade0-737bebf87321, taskType=DATA_EXPORT, activeTasks=8
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=ca6faa2e-5689-419d-ade0-737bebf87321, duration=10s
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=ecbe4d5f-1e65-4890-9203-3f67609c9378, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=ecbe4d5f-1e65-4890-9203-3f67609c9378
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=ecbe4d5f-1e65-4890-9203-3f67609c9378, retryCount=0, msgId=C0A8A00500015305068A9C271AEC000A
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=ecbe4d5f-1e65-4890-9203-3f67609c9378
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=ecbe4d5f-1e65-4890-9203-3f67609c9378, taskType=DATA_EXPORT, activeTasks=9
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=ecbe4d5f-1e65-4890-9203-3f67609c9378, duration=10s
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task created: taskId=e2bcc435-6e57-489d-be91-164b2d28136d, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=e2bcc435-6e57-489d-be91-164b2d28136d
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=e2bcc435-6e57-489d-be91-164b2d28136d, retryCount=0, msgId=C0A8A00500015305068A9C271B17000B
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=e2bcc435-6e57-489d-be91-164b2d28136d
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=e2bcc435-6e57-489d-be91-164b2d28136d, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=e2bcc435-6e57-489d-be91-164b2d28136d, duration=10s
+2026-01-31 07:43:28 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=2237b139-3f15-4171-8dc8-7578779177d6, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=2237b139-3f15-4171-8dc8-7578779177d6
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=bc2a94a2-0108-448b-b787-65c5e36aef0f, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=bc2a94a2-0108-448b-b787-65c5e36aef0f
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=5567dbb7-f222-4bb1-acd9-8db4732bfb72, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=5567dbb7-f222-4bb1-acd9-8db4732bfb72
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=4d6a7ac7-2b9a-4b0f-9379-c1a7b0d8dff7, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=4d6a7ac7-2b9a-4b0f-9379-c1a7b0d8dff7
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task created: taskId=f761bc20-dda6-43f7-bc29-e683991c1b58, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=f761bc20-dda6-43f7-bc29-e683991c1b58
+2026-01-31 07:43:28 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=4d319ecd-2bf6-47a7-8e37-3847c85ef3d7, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=4d319ecd-2bf6-47a7-8e37-3847c85ef3d7
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=3b150127-9cd2-4081-a126-245b14312f0c, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=3b150127-9cd2-4081-a126-245b14312f0c
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=7251a990-a93a-4e2a-83b8-c6f95456de61, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=7251a990-a93a-4e2a-83b8-c6f95456de61
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=a04d6cc5-31eb-4d5e-bac1-5e59e1f0fc13, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=a04d6cc5-31eb-4d5e-bac1-5e59e1f0fc13
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task created: taskId=85c01345-1038-43ee-8f1f-9f3aa757ba22, taskType=DATA_EXPORT
+2026-01-31 07:43:28 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=85c01345-1038-43ee-8f1f-9f3aa757ba22
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=d21e0ace-0550-4b2b-815e-2b39467d1539, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=d21e0ace-0550-4b2b-815e-2b39467d1539
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=d54b6a81-5795-4973-ab2c-353b49237a21, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=d54b6a81-5795-4973-ab2c-353b49237a21
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=dfc26ce0-8ecd-4137-ae2a-c6e5becde272, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=dfc26ce0-8ecd-4137-ae2a-c6e5becde272
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=c332ffe6-6704-4597-8843-b33a86411cad, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=c332ffe6-6704-4597-8843-b33a86411cad
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task created: taskId=fb6a0c67-ab46-41d4-b788-14ace81baceb, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=fb6a0c67-ab46-41d4-b788-14ace81baceb
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=ec4a00ec-4457-422c-9cac-96f5671360ed, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=ec4a00ec-4457-422c-9cac-96f5671360ed
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=d544a484-c414-4660-b56c-75ac0a62362f, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=d544a484-c414-4660-b56c-75ac0a62362f
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=de049ddd-0cef-4d18-ad89-5fe4ea8b81ce, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=de049ddd-0cef-4d18-ad89-5fe4ea8b81ce
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=b23cce3a-d6ae-4413-96c6-2c463828e2e3, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=b23cce3a-d6ae-4413-96c6-2c463828e2e3
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task created: taskId=4ecd4000-3f1b-4d3a-8cf0-bb01f2ae211f, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=4ecd4000-3f1b-4d3a-8cf0-bb01f2ae211f
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=8fed5881-6f4a-4de3-9e75-6c68eda2f767, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=8fed5881-6f4a-4de3-9e75-6c68eda2f767
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=4f506981-18a2-46b3-8379-995a0ecfa9f3, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=4f506981-18a2-46b3-8379-995a0ecfa9f3
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=ee9dd40b-d8ee-45cb-845b-f01aa57e7070, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=ee9dd40b-d8ee-45cb-845b-f01aa57e7070
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=7ee760df-2527-442a-bd46-7badf25884b6, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=7ee760df-2527-442a-bd46-7badf25884b6
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task created: taskId=cb563aa4-d062-41e9-a538-97545d2db986, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=cb563aa4-d062-41e9-a538-97545d2db986
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=f51fa8d6-1808-406f-9e37-35352b4315d3, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=f51fa8d6-1808-406f-9e37-35352b4315d3
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=26d11d42-19c7-4a1a-8f2f-cc844d8454a6, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=26d11d42-19c7-4a1a-8f2f-cc844d8454a6
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=5af1ebab-8f49-48ca-b7ab-b5b9351a1a71, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=5af1ebab-8f49-48ca-b7ab-b5b9351a1a71
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=d4fda8a5-8048-4aa3-8dc4-fd652823b7c9, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=d4fda8a5-8048-4aa3-8dc4-fd652823b7c9
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task created: taskId=974b2232-16d9-4e26-a875-82dc60336e4d, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=974b2232-16d9-4e26-a875-82dc60336e4d
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=d3eb07de-e002-4063-b0ae-f6421acea9f5, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=d3eb07de-e002-4063-b0ae-f6421acea9f5
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=6c1625ed-f5da-4910-99b0-88aaae7ba7e9, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=6c1625ed-f5da-4910-99b0-88aaae7ba7e9
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=057d9a92-87f2-4d50-a098-dff061398785, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=057d9a92-87f2-4d50-a098-dff061398785
+2026-01-31 07:43:29 [http-nio-8080-exec-9] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-9] INFO  c.example.task.service.TaskService - Task created: taskId=de5a11da-9d11-46fe-8379-56798d5deb1f, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-9] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=de5a11da-9d11-46fe-8379-56798d5deb1f
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task created: taskId=5b1abfe8-9b2d-4c12-bba1-81553495f294, taskType=DATA_EXPORT
+2026-01-31 07:43:29 [http-nio-8080-exec-1] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=5b1abfe8-9b2d-4c12-bba1-81553495f294
+2026-01-31 07:43:30 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=31c6007f-376d-4de8-89d7-23b6c25ce8ca, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=31c6007f-376d-4de8-89d7-23b6c25ce8ca
+2026-01-31 07:43:30 [http-nio-8080-exec-5] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task created: taskId=e4dcd3b8-6107-4a84-a757-d985249b32d8, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-5] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=e4dcd3b8-6107-4a84-a757-d985249b32d8
+2026-01-31 07:43:30 [http-nio-8080-exec-7] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task created: taskId=e8c460ad-57cc-40c0-81f2-8cecf70447b9, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-7] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=e8c460ad-57cc-40c0-81f2-8cecf70447b9
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=0b34be37-114c-4af3-a3bf-49038888ca22, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=0b34be37-114c-4af3-a3bf-49038888ca22
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=915f0c36-854c-4ed1-843b-a166f093f7d4, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=915f0c36-854c-4ed1-843b-a166f093f7d4
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task created: taskId=74b3cc3d-3f5a-42b1-b1e5-419946d89719, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=74b3cc3d-3f5a-42b1-b1e5-419946d89719
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task created: taskId=3642795e-5251-4807-a436-7f2dda0bd414, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=3642795e-5251-4807-a436-7f2dda0bd414
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task created: taskId=b3ab2eb5-ea56-47a3-8bb8-6179d61e841d, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=b3ab2eb5-ea56-47a3-8bb8-6179d61e841d
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=f413ef93-bc76-41ff-b6b2-34a0ef8c4468, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=f413ef93-bc76-41ff-b6b2-34a0ef8c4468
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=0768e22b-e4fc-4d5b-9d4e-3c170c74b0dd, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=0768e22b-e4fc-4d5b-9d4e-3c170c74b0dd
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task created: taskId=f9fd71b5-f227-472c-93bc-d7761b9d03e6, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=f9fd71b5-f227-472c-93bc-d7761b9d03e6
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task created: taskId=fb378fb9-363b-4ce5-8313-9b8dca988179, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=fb378fb9-363b-4ce5-8313-9b8dca988179
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task created: taskId=a6fe6336-5aa8-4503-892e-482279cf3085, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=a6fe6336-5aa8-4503-892e-482279cf3085
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=0278abcd-3cd7-4e9d-af93-3ba153ce9525, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=0278abcd-3cd7-4e9d-af93-3ba153ce9525
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=c3f5e662-c08d-4a0c-8597-8b2bd7f067f3, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=c3f5e662-c08d-4a0c-8597-8b2bd7f067f3
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task created: taskId=de82bdde-8396-46c4-bff7-eb1c49e3a997, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=de82bdde-8396-46c4-bff7-eb1c49e3a997
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task created: taskId=386e04e7-1eca-438d-861f-c3c1b56954e3, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=386e04e7-1eca-438d-861f-c3c1b56954e3
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task created: taskId=3a7ac166-4b72-4cdd-b197-e075f6e9cb6e, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=3a7ac166-4b72-4cdd-b197-e075f6e9cb6e
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=08da6fc5-21a2-49c4-a6d7-1468ceed9729, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=08da6fc5-21a2-49c4-a6d7-1468ceed9729
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=40b01fa1-806a-4bb8-8d9e-7c8ef3bb40a8, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=40b01fa1-806a-4bb8-8d9e-7c8ef3bb40a8
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task created: taskId=a2953cb1-916d-491b-bec0-c7aa33ba28f5, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=a2953cb1-916d-491b-bec0-c7aa33ba28f5
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task created: taskId=dcf2e7f9-94f9-4dae-b26b-d674af91d9ea, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=dcf2e7f9-94f9-4dae-b26b-d674af91d9ea
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task created: taskId=0ae8e4fa-77bd-4015-acaa-9ab1a76af8cc, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=0ae8e4fa-77bd-4015-acaa-9ab1a76af8cc
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=57db33a9-1481-469d-8317-c36bb926e9d8, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=57db33a9-1481-469d-8317-c36bb926e9d8
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=e75ff800-269d-4d26-8074-f787b5eefd35, taskType=DATA_EXPORT
+2026-01-31 07:43:30 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=e75ff800-269d-4d26-8074-f787b5eefd35
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=25da7c03-1866-49ca-85ae-633f36aeb45b, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=25da7c03-1866-49ca-85ae-633f36aeb45b
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task created: taskId=7ba7ac0f-a05b-40fd-b35e-e0f3186663ec, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=7ba7ac0f-a05b-40fd-b35e-e0f3186663ec
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=13b06af8-ffbf-4b3e-acf8-d0cb622deff9, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=13b06af8-ffbf-4b3e-acf8-d0cb622deff9
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=a5af659a-295a-458f-a4d4-7ba73868c439, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=a5af659a-295a-458f-a4d4-7ba73868c439
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task created: taskId=3e0f4864-dae5-42b4-aee2-eede8556cee1, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=3e0f4864-dae5-42b4-aee2-eede8556cee1
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=c3162f06-1bb2-453a-84c1-e640c9f36ca5, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=c3162f06-1bb2-453a-84c1-e640c9f36ca5
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task created: taskId=a2595de4-ca43-4ede-b057-a551af9ceba6, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=a2595de4-ca43-4ede-b057-a551af9ceba6
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=3436caf6-288c-4d1f-94a1-0f14518a1b34, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=3436caf6-288c-4d1f-94a1-0f14518a1b34
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=9756f29a-596e-4b84-a519-359b005f1d57, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=9756f29a-596e-4b84-a519-359b005f1d57
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task created: taskId=2f61655f-eea3-4a05-bfaf-35572580b6e6, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=2f61655f-eea3-4a05-bfaf-35572580b6e6
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=66d8033b-b66d-46e4-9cf2-cd3e5b80ffef, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=66d8033b-b66d-46e4-9cf2-cd3e5b80ffef
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task created: taskId=cdd335d0-970d-4c91-b3e6-5d442eba3c02, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=cdd335d0-970d-4c91-b3e6-5d442eba3c02
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=c7fe9ce8-7598-40d9-82d0-56dfff2f7b6e, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=c7fe9ce8-7598-40d9-82d0-56dfff2f7b6e
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=1b48c412-a22a-45bc-aef9-1c1d8f07508b, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=1b48c412-a22a-45bc-aef9-1c1d8f07508b
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task created: taskId=70b1f0a8-319c-47c2-a951-837edcb032fb, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=70b1f0a8-319c-47c2-a951-837edcb032fb
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=5001f68a-b51c-48c5-822b-0fe291d71de2, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=5001f68a-b51c-48c5-822b-0fe291d71de2
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task created: taskId=f675991a-0568-45d8-9053-922a38649218, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=f675991a-0568-45d8-9053-922a38649218
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=7940c7f1-e5fc-4c80-8751-f8f0fec2a61f, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=7940c7f1-e5fc-4c80-8751-f8f0fec2a61f
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=b18d48ee-fd8b-4906-b947-ac56b8c1ffcf, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=b18d48ee-fd8b-4906-b947-ac56b8c1ffcf
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task created: taskId=06753048-fcbb-4939-b76f-be8a1fb5a458, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-2] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=06753048-fcbb-4939-b76f-be8a1fb5a458
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=d4aea326-17e9-4dcc-af1c-ad26d988fa19, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=d4aea326-17e9-4dcc-af1c-ad26d988fa19
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task created: taskId=b2ff8de9-cd4e-4c5d-92b2-3c25f9f74d13, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=b2ff8de9-cd4e-4c5d-92b2-3c25f9f74d13
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=9d8df021-146f-44df-84ed-2db48ecc65af, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=9d8df021-146f-44df-84ed-2db48ecc65af
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=c4b4de93-d106-40bf-b09f-8c4872e3e606, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=c4b4de93-d106-40bf-b09f-8c4872e3e606
+2026-01-31 07:43:31 [http-nio-8080-exec-3] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task created: taskId=1253c86b-f9bd-48bd-a3d3-0f3a3b0ecffc, taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=1253c86b-f9bd-48bd-a3d3-0f3a3b0ecffc
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:31 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task created: taskId=c6e99456-c2cb-4a45-8ce2-05842d0f43ea, taskType=DATA_EXPORT
+2026-01-31 07:43:32 [http-nio-8080-exec-4] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=c6e99456-c2cb-4a45-8ce2-05842d0f43ea
+2026-01-31 07:43:32 [http-nio-8080-exec-6] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:32 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task created: taskId=1f0a6a6c-9333-43cf-b904-337faa81f9e1, taskType=DATA_EXPORT
+2026-01-31 07:43:32 [http-nio-8080-exec-6] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=1f0a6a6c-9333-43cf-b904-337faa81f9e1
+2026-01-31 07:43:32 [http-nio-8080-exec-8] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:32 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task created: taskId=b65303cf-3932-41c6-b909-ae6c4ebf9bd3, taskType=DATA_EXPORT
+2026-01-31 07:43:32 [http-nio-8080-exec-8] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=b65303cf-3932-41c6-b909-ae6c4ebf9bd3
+2026-01-31 07:43:32 [http-nio-8080-exec-10] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:32 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task created: taskId=2039dcb1-4724-43a3-9e77-cf068adf60b8, taskType=DATA_EXPORT
+2026-01-31 07:43:32 [http-nio-8080-exec-10] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=2039dcb1-4724-43a3-9e77-cf068adf60b8
+2026-01-31 07:43:32 [http-nio-8080-exec-3] INFO  c.e.task.controller.TaskController - Received task submission: taskType=DATA_EXPORT
+2026-01-31 07:43:32 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task created: taskId=de3a0005-3495-4c04-b377-b5be84d09d5e, taskType=DATA_EXPORT
+2026-01-31 07:43:32 [http-nio-8080-exec-3] INFO  c.example.task.service.TaskService - Task sent to queue: taskId=de3a0005-3495-4c04-b377-b5be84d09d5e
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=1802a344-2195-4f51-b1ea-e8cbc01cb342, activeTasks=9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=1802a344-2195-4f51-b1ea-e8cbc01cb342
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=1802a344-2195-4f51-b1ea-e8cbc01cb342
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=2237b139-3f15-4171-8dc8-7578779177d6, retryCount=0, msgId=C0A8A00500015305068A9C271B42000C
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=2237b139-3f15-4171-8dc8-7578779177d6
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=2237b139-3f15-4171-8dc8-7578779177d6, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=2237b139-3f15-4171-8dc8-7578779177d6, duration=10s
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=3bf9ac4f-63e0-4384-8620-1eb62d99127b, activeTasks=9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=3bf9ac4f-63e0-4384-8620-1eb62d99127b
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=3bf9ac4f-63e0-4384-8620-1eb62d99127b
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=bc2a94a2-0108-448b-b787-65c5e36aef0f, retryCount=0, msgId=C0A8A00500015305068A9C271B71000D
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=bc2a94a2-0108-448b-b787-65c5e36aef0f
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=bc2a94a2-0108-448b-b787-65c5e36aef0f, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=bc2a94a2-0108-448b-b787-65c5e36aef0f, duration=10s
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=49233bf0-3762-4d02-a48a-e90b982c924b, activeTasks=9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=49233bf0-3762-4d02-a48a-e90b982c924b
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=49233bf0-3762-4d02-a48a-e90b982c924b
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=5567dbb7-f222-4bb1-acd9-8db4732bfb72, retryCount=0, msgId=C0A8A00500015305068A9C271BB4000E
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=5567dbb7-f222-4bb1-acd9-8db4732bfb72
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=5567dbb7-f222-4bb1-acd9-8db4732bfb72, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=5567dbb7-f222-4bb1-acd9-8db4732bfb72, duration=10s
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=c7c81486-246b-4306-bc67-0cb36e2b54f9, activeTasks=9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=c7c81486-246b-4306-bc67-0cb36e2b54f9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=c7c81486-246b-4306-bc67-0cb36e2b54f9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=4d6a7ac7-2b9a-4b0f-9379-c1a7b0d8dff7, retryCount=0, msgId=C0A8A00500015305068A9C271BDC000F
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=4d6a7ac7-2b9a-4b0f-9379-c1a7b0d8dff7
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=4d6a7ac7-2b9a-4b0f-9379-c1a7b0d8dff7, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=4d6a7ac7-2b9a-4b0f-9379-c1a7b0d8dff7, duration=10s
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=0d40c5cc-89de-4f87-b0e3-1ebd0e2b3ecf, activeTasks=9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=0d40c5cc-89de-4f87-b0e3-1ebd0e2b3ecf
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=0d40c5cc-89de-4f87-b0e3-1ebd0e2b3ecf
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=f761bc20-dda6-43f7-bc29-e683991c1b58, retryCount=0, msgId=C0A8A00500015305068A9C271C080010
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=f761bc20-dda6-43f7-bc29-e683991c1b58
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=f761bc20-dda6-43f7-bc29-e683991c1b58, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=f761bc20-dda6-43f7-bc29-e683991c1b58, duration=10s
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=8bd4956b-4b7a-465b-a0db-4872c35e52a5, activeTasks=9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=8bd4956b-4b7a-465b-a0db-4872c35e52a5
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=8bd4956b-4b7a-465b-a0db-4872c35e52a5
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=4d319ecd-2bf6-47a7-8e37-3847c85ef3d7, retryCount=0, msgId=C0A8A00500015305068A9C271C380011
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=4d319ecd-2bf6-47a7-8e37-3847c85ef3d7
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=4d319ecd-2bf6-47a7-8e37-3847c85ef3d7, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=4d319ecd-2bf6-47a7-8e37-3847c85ef3d7, duration=10s
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=2ad8aae9-0651-4920-99bf-88e4bf1f1cb4, activeTasks=9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=2ad8aae9-0651-4920-99bf-88e4bf1f1cb4
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=2ad8aae9-0651-4920-99bf-88e4bf1f1cb4
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=3b150127-9cd2-4081-a126-245b14312f0c, retryCount=0, msgId=C0A8A00500015305068A9C271C5C0012
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=3b150127-9cd2-4081-a126-245b14312f0c
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=3b150127-9cd2-4081-a126-245b14312f0c, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=3b150127-9cd2-4081-a126-245b14312f0c, duration=10s
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=ca6faa2e-5689-419d-ade0-737bebf87321, activeTasks=9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=ca6faa2e-5689-419d-ade0-737bebf87321
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=ca6faa2e-5689-419d-ade0-737bebf87321
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=7251a990-a93a-4e2a-83b8-c6f95456de61, retryCount=0, msgId=C0A8A00500015305068A9C271C7F0013
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=7251a990-a93a-4e2a-83b8-c6f95456de61
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=7251a990-a93a-4e2a-83b8-c6f95456de61, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=7251a990-a93a-4e2a-83b8-c6f95456de61, duration=10s
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=ecbe4d5f-1e65-4890-9203-3f67609c9378, activeTasks=9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=ecbe4d5f-1e65-4890-9203-3f67609c9378
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=ecbe4d5f-1e65-4890-9203-3f67609c9378
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=a04d6cc5-31eb-4d5e-bac1-5e59e1f0fc13, retryCount=0, msgId=C0A8A00500015305068A9C271CA50014
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=a04d6cc5-31eb-4d5e-bac1-5e59e1f0fc13
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=a04d6cc5-31eb-4d5e-bac1-5e59e1f0fc13, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=a04d6cc5-31eb-4d5e-bac1-5e59e1f0fc13, duration=10s
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=e2bcc435-6e57-489d-be91-164b2d28136d, activeTasks=9
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=e2bcc435-6e57-489d-be91-164b2d28136d
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=e2bcc435-6e57-489d-be91-164b2d28136d
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=85c01345-1038-43ee-8f1f-9f3aa757ba22, retryCount=0, msgId=C0A8A00500015305068A9C271CCF0015
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=85c01345-1038-43ee-8f1f-9f3aa757ba22
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=85c01345-1038-43ee-8f1f-9f3aa757ba22, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=85c01345-1038-43ee-8f1f-9f3aa757ba22, duration=10s
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=2237b139-3f15-4171-8dc8-7578779177d6, activeTasks=9
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=2237b139-3f15-4171-8dc8-7578779177d6
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=2237b139-3f15-4171-8dc8-7578779177d6
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=d21e0ace-0550-4b2b-815e-2b39467d1539, retryCount=0, msgId=C0A8A00500015305068A9C271CF50016
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=d21e0ace-0550-4b2b-815e-2b39467d1539
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=d21e0ace-0550-4b2b-815e-2b39467d1539, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=d21e0ace-0550-4b2b-815e-2b39467d1539, duration=10s
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=bc2a94a2-0108-448b-b787-65c5e36aef0f, activeTasks=9
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=bc2a94a2-0108-448b-b787-65c5e36aef0f
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=bc2a94a2-0108-448b-b787-65c5e36aef0f
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=d54b6a81-5795-4973-ab2c-353b49237a21, retryCount=0, msgId=C0A8A00500015305068A9C271D1A0017
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=d54b6a81-5795-4973-ab2c-353b49237a21
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=d54b6a81-5795-4973-ab2c-353b49237a21, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=d54b6a81-5795-4973-ab2c-353b49237a21, duration=10s
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=5567dbb7-f222-4bb1-acd9-8db4732bfb72, activeTasks=9
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=5567dbb7-f222-4bb1-acd9-8db4732bfb72
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=5567dbb7-f222-4bb1-acd9-8db4732bfb72
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=dfc26ce0-8ecd-4137-ae2a-c6e5becde272, retryCount=0, msgId=C0A8A00500015305068A9C271D400018
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=dfc26ce0-8ecd-4137-ae2a-c6e5becde272
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=dfc26ce0-8ecd-4137-ae2a-c6e5becde272, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=dfc26ce0-8ecd-4137-ae2a-c6e5becde272, duration=10s
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=4d6a7ac7-2b9a-4b0f-9379-c1a7b0d8dff7, activeTasks=9
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=4d6a7ac7-2b9a-4b0f-9379-c1a7b0d8dff7
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=4d6a7ac7-2b9a-4b0f-9379-c1a7b0d8dff7
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=c332ffe6-6704-4597-8843-b33a86411cad, retryCount=0, msgId=C0A8A00500015305068A9C271D660019
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=c332ffe6-6704-4597-8843-b33a86411cad
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=c332ffe6-6704-4597-8843-b33a86411cad, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=c332ffe6-6704-4597-8843-b33a86411cad, duration=10s
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=f761bc20-dda6-43f7-bc29-e683991c1b58, activeTasks=9
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=f761bc20-dda6-43f7-bc29-e683991c1b58
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=f761bc20-dda6-43f7-bc29-e683991c1b58
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=fb6a0c67-ab46-41d4-b788-14ace81baceb, retryCount=0, msgId=C0A8A00500015305068A9C271D8B001A
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=fb6a0c67-ab46-41d4-b788-14ace81baceb
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=fb6a0c67-ab46-41d4-b788-14ace81baceb, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=fb6a0c67-ab46-41d4-b788-14ace81baceb, duration=10s
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=4d319ecd-2bf6-47a7-8e37-3847c85ef3d7, activeTasks=9
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=4d319ecd-2bf6-47a7-8e37-3847c85ef3d7
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=4d319ecd-2bf6-47a7-8e37-3847c85ef3d7
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=ec4a00ec-4457-422c-9cac-96f5671360ed, retryCount=0, msgId=C0A8A00500015305068A9C271DBE001B
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=ec4a00ec-4457-422c-9cac-96f5671360ed
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=ec4a00ec-4457-422c-9cac-96f5671360ed, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=ec4a00ec-4457-422c-9cac-96f5671360ed, duration=10s
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=3b150127-9cd2-4081-a126-245b14312f0c, activeTasks=9
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=3b150127-9cd2-4081-a126-245b14312f0c
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=3b150127-9cd2-4081-a126-245b14312f0c
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=d544a484-c414-4660-b56c-75ac0a62362f, retryCount=0, msgId=C0A8A00500015305068A9C271DED001C
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=d544a484-c414-4660-b56c-75ac0a62362f
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=d544a484-c414-4660-b56c-75ac0a62362f, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=d544a484-c414-4660-b56c-75ac0a62362f, duration=10s
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=7251a990-a93a-4e2a-83b8-c6f95456de61, activeTasks=9
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=7251a990-a93a-4e2a-83b8-c6f95456de61
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=7251a990-a93a-4e2a-83b8-c6f95456de61
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=de049ddd-0cef-4d18-ad89-5fe4ea8b81ce, retryCount=0, msgId=C0A8A00500015305068A9C271E14001D
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=de049ddd-0cef-4d18-ad89-5fe4ea8b81ce
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=de049ddd-0cef-4d18-ad89-5fe4ea8b81ce, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=de049ddd-0cef-4d18-ad89-5fe4ea8b81ce, duration=10s
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=a04d6cc5-31eb-4d5e-bac1-5e59e1f0fc13, activeTasks=9
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=a04d6cc5-31eb-4d5e-bac1-5e59e1f0fc13
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=a04d6cc5-31eb-4d5e-bac1-5e59e1f0fc13
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=b23cce3a-d6ae-4413-96c6-2c463828e2e3, retryCount=0, msgId=C0A8A00500015305068A9C271E3A001E
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=b23cce3a-d6ae-4413-96c6-2c463828e2e3
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=b23cce3a-d6ae-4413-96c6-2c463828e2e3, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=b23cce3a-d6ae-4413-96c6-2c463828e2e3, duration=10s
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=85c01345-1038-43ee-8f1f-9f3aa757ba22, activeTasks=9
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=85c01345-1038-43ee-8f1f-9f3aa757ba22
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=85c01345-1038-43ee-8f1f-9f3aa757ba22
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=4ecd4000-3f1b-4d3a-8cf0-bb01f2ae211f, retryCount=0, msgId=C0A8A00500015305068A9C271E62001F
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=4ecd4000-3f1b-4d3a-8cf0-bb01f2ae211f
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=4ecd4000-3f1b-4d3a-8cf0-bb01f2ae211f, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=4ecd4000-3f1b-4d3a-8cf0-bb01f2ae211f, duration=10s
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=d21e0ace-0550-4b2b-815e-2b39467d1539, activeTasks=9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=d21e0ace-0550-4b2b-815e-2b39467d1539
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=d21e0ace-0550-4b2b-815e-2b39467d1539
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=8fed5881-6f4a-4de3-9e75-6c68eda2f767, retryCount=0, msgId=C0A8A00500015305068A9C271E870020
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=8fed5881-6f4a-4de3-9e75-6c68eda2f767
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=8fed5881-6f4a-4de3-9e75-6c68eda2f767, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=8fed5881-6f4a-4de3-9e75-6c68eda2f767, duration=10s
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=d54b6a81-5795-4973-ab2c-353b49237a21, activeTasks=9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=d54b6a81-5795-4973-ab2c-353b49237a21
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=d54b6a81-5795-4973-ab2c-353b49237a21
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=4f506981-18a2-46b3-8379-995a0ecfa9f3, retryCount=0, msgId=C0A8A00500015305068A9C271EAA0021
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=4f506981-18a2-46b3-8379-995a0ecfa9f3
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=4f506981-18a2-46b3-8379-995a0ecfa9f3, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=4f506981-18a2-46b3-8379-995a0ecfa9f3, duration=10s
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=dfc26ce0-8ecd-4137-ae2a-c6e5becde272, activeTasks=9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=dfc26ce0-8ecd-4137-ae2a-c6e5becde272
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=dfc26ce0-8ecd-4137-ae2a-c6e5becde272
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=ee9dd40b-d8ee-45cb-845b-f01aa57e7070, retryCount=0, msgId=C0A8A00500015305068A9C271ECF0022
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=ee9dd40b-d8ee-45cb-845b-f01aa57e7070
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=ee9dd40b-d8ee-45cb-845b-f01aa57e7070, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=ee9dd40b-d8ee-45cb-845b-f01aa57e7070, duration=10s
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=c332ffe6-6704-4597-8843-b33a86411cad, activeTasks=9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=c332ffe6-6704-4597-8843-b33a86411cad
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=c332ffe6-6704-4597-8843-b33a86411cad
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=7ee760df-2527-442a-bd46-7badf25884b6, retryCount=0, msgId=C0A8A00500015305068A9C271EF60023
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=7ee760df-2527-442a-bd46-7badf25884b6
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=7ee760df-2527-442a-bd46-7badf25884b6, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=7ee760df-2527-442a-bd46-7badf25884b6, duration=10s
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=fb6a0c67-ab46-41d4-b788-14ace81baceb, activeTasks=9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=fb6a0c67-ab46-41d4-b788-14ace81baceb
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=fb6a0c67-ab46-41d4-b788-14ace81baceb
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=cb563aa4-d062-41e9-a538-97545d2db986, retryCount=0, msgId=C0A8A00500015305068A9C271F1A0024
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=cb563aa4-d062-41e9-a538-97545d2db986
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=cb563aa4-d062-41e9-a538-97545d2db986, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=cb563aa4-d062-41e9-a538-97545d2db986, duration=10s
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=ec4a00ec-4457-422c-9cac-96f5671360ed, activeTasks=9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=ec4a00ec-4457-422c-9cac-96f5671360ed
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=ec4a00ec-4457-422c-9cac-96f5671360ed
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=f51fa8d6-1808-406f-9e37-35352b4315d3, retryCount=0, msgId=C0A8A00500015305068A9C271F410025
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=f51fa8d6-1808-406f-9e37-35352b4315d3
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=f51fa8d6-1808-406f-9e37-35352b4315d3, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=f51fa8d6-1808-406f-9e37-35352b4315d3, duration=10s
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=d544a484-c414-4660-b56c-75ac0a62362f, activeTasks=9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=d544a484-c414-4660-b56c-75ac0a62362f
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=d544a484-c414-4660-b56c-75ac0a62362f
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=26d11d42-19c7-4a1a-8f2f-cc844d8454a6, retryCount=0, msgId=C0A8A00500015305068A9C271F640026
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=26d11d42-19c7-4a1a-8f2f-cc844d8454a6
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=26d11d42-19c7-4a1a-8f2f-cc844d8454a6, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=26d11d42-19c7-4a1a-8f2f-cc844d8454a6, duration=10s
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=de049ddd-0cef-4d18-ad89-5fe4ea8b81ce, activeTasks=9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=de049ddd-0cef-4d18-ad89-5fe4ea8b81ce
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=de049ddd-0cef-4d18-ad89-5fe4ea8b81ce
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=5af1ebab-8f49-48ca-b7ab-b5b9351a1a71, retryCount=0, msgId=C0A8A00500015305068A9C271F890027
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=5af1ebab-8f49-48ca-b7ab-b5b9351a1a71
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=5af1ebab-8f49-48ca-b7ab-b5b9351a1a71, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=5af1ebab-8f49-48ca-b7ab-b5b9351a1a71, duration=10s
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=b23cce3a-d6ae-4413-96c6-2c463828e2e3, activeTasks=9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=b23cce3a-d6ae-4413-96c6-2c463828e2e3
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=b23cce3a-d6ae-4413-96c6-2c463828e2e3
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=d4fda8a5-8048-4aa3-8dc4-fd652823b7c9, retryCount=0, msgId=C0A8A00500015305068A9C271FAB0028
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=d4fda8a5-8048-4aa3-8dc4-fd652823b7c9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=d4fda8a5-8048-4aa3-8dc4-fd652823b7c9, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=d4fda8a5-8048-4aa3-8dc4-fd652823b7c9, duration=10s
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=4ecd4000-3f1b-4d3a-8cf0-bb01f2ae211f, activeTasks=9
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=4ecd4000-3f1b-4d3a-8cf0-bb01f2ae211f
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=4ecd4000-3f1b-4d3a-8cf0-bb01f2ae211f
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=974b2232-16d9-4e26-a875-82dc60336e4d, retryCount=0, msgId=C0A8A00500015305068A9C271FD10029
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=974b2232-16d9-4e26-a875-82dc60336e4d
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=974b2232-16d9-4e26-a875-82dc60336e4d, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:43:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=974b2232-16d9-4e26-a875-82dc60336e4d, duration=10s
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=8fed5881-6f4a-4de3-9e75-6c68eda2f767, activeTasks=9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=8fed5881-6f4a-4de3-9e75-6c68eda2f767
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=8fed5881-6f4a-4de3-9e75-6c68eda2f767
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=d3eb07de-e002-4063-b0ae-f6421acea9f5, retryCount=0, msgId=C0A8A00500015305068A9C271FF8002A
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=d3eb07de-e002-4063-b0ae-f6421acea9f5
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=d3eb07de-e002-4063-b0ae-f6421acea9f5, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=d3eb07de-e002-4063-b0ae-f6421acea9f5, duration=10s
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=4f506981-18a2-46b3-8379-995a0ecfa9f3, activeTasks=9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=4f506981-18a2-46b3-8379-995a0ecfa9f3
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=4f506981-18a2-46b3-8379-995a0ecfa9f3
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=6c1625ed-f5da-4910-99b0-88aaae7ba7e9, retryCount=0, msgId=C0A8A00500015305068A9C272021002B
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=6c1625ed-f5da-4910-99b0-88aaae7ba7e9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=6c1625ed-f5da-4910-99b0-88aaae7ba7e9, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=6c1625ed-f5da-4910-99b0-88aaae7ba7e9, duration=10s
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=ee9dd40b-d8ee-45cb-845b-f01aa57e7070, activeTasks=9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=ee9dd40b-d8ee-45cb-845b-f01aa57e7070
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=ee9dd40b-d8ee-45cb-845b-f01aa57e7070
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=057d9a92-87f2-4d50-a098-dff061398785, retryCount=0, msgId=C0A8A00500015305068A9C27204C002C
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=057d9a92-87f2-4d50-a098-dff061398785
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=057d9a92-87f2-4d50-a098-dff061398785, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=057d9a92-87f2-4d50-a098-dff061398785, duration=10s
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=7ee760df-2527-442a-bd46-7badf25884b6, activeTasks=9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=7ee760df-2527-442a-bd46-7badf25884b6
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=7ee760df-2527-442a-bd46-7badf25884b6
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=de5a11da-9d11-46fe-8379-56798d5deb1f, retryCount=0, msgId=C0A8A00500015305068A9C272073002D
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=de5a11da-9d11-46fe-8379-56798d5deb1f
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=de5a11da-9d11-46fe-8379-56798d5deb1f, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=de5a11da-9d11-46fe-8379-56798d5deb1f, duration=10s
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=cb563aa4-d062-41e9-a538-97545d2db986, activeTasks=9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=cb563aa4-d062-41e9-a538-97545d2db986
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=cb563aa4-d062-41e9-a538-97545d2db986
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=5b1abfe8-9b2d-4c12-bba1-81553495f294, retryCount=0, msgId=C0A8A00500015305068A9C27209E002E
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=5b1abfe8-9b2d-4c12-bba1-81553495f294
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=5b1abfe8-9b2d-4c12-bba1-81553495f294, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=5b1abfe8-9b2d-4c12-bba1-81553495f294, duration=10s
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=f51fa8d6-1808-406f-9e37-35352b4315d3, activeTasks=9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=f51fa8d6-1808-406f-9e37-35352b4315d3
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=f51fa8d6-1808-406f-9e37-35352b4315d3
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=31c6007f-376d-4de8-89d7-23b6c25ce8ca, retryCount=0, msgId=C0A8A00500015305068A9C2720D9002F
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=31c6007f-376d-4de8-89d7-23b6c25ce8ca
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=31c6007f-376d-4de8-89d7-23b6c25ce8ca, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=31c6007f-376d-4de8-89d7-23b6c25ce8ca, duration=10s
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=26d11d42-19c7-4a1a-8f2f-cc844d8454a6, activeTasks=9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=26d11d42-19c7-4a1a-8f2f-cc844d8454a6
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=26d11d42-19c7-4a1a-8f2f-cc844d8454a6
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=e4dcd3b8-6107-4a84-a757-d985249b32d8, retryCount=0, msgId=C0A8A00500015305068A9C2721080030
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=e4dcd3b8-6107-4a84-a757-d985249b32d8
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=e4dcd3b8-6107-4a84-a757-d985249b32d8, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=e4dcd3b8-6107-4a84-a757-d985249b32d8, duration=10s
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=5af1ebab-8f49-48ca-b7ab-b5b9351a1a71, activeTasks=9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=5af1ebab-8f49-48ca-b7ab-b5b9351a1a71
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=5af1ebab-8f49-48ca-b7ab-b5b9351a1a71
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=e8c460ad-57cc-40c0-81f2-8cecf70447b9, retryCount=0, msgId=C0A8A00500015305068A9C2721320031
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=e8c460ad-57cc-40c0-81f2-8cecf70447b9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=e8c460ad-57cc-40c0-81f2-8cecf70447b9, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=e8c460ad-57cc-40c0-81f2-8cecf70447b9, duration=10s
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=d4fda8a5-8048-4aa3-8dc4-fd652823b7c9, activeTasks=9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=d4fda8a5-8048-4aa3-8dc4-fd652823b7c9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=d4fda8a5-8048-4aa3-8dc4-fd652823b7c9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=0b34be37-114c-4af3-a3bf-49038888ca22, retryCount=0, msgId=C0A8A00500015305068A9C27215E0032
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=0b34be37-114c-4af3-a3bf-49038888ca22
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=0b34be37-114c-4af3-a3bf-49038888ca22, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=0b34be37-114c-4af3-a3bf-49038888ca22, duration=10s
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=974b2232-16d9-4e26-a875-82dc60336e4d, activeTasks=9
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=974b2232-16d9-4e26-a875-82dc60336e4d
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=974b2232-16d9-4e26-a875-82dc60336e4d
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=915f0c36-854c-4ed1-843b-a166f093f7d4, retryCount=0, msgId=C0A8A00500015305068A9C27218A0033
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=915f0c36-854c-4ed1-843b-a166f093f7d4
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=915f0c36-854c-4ed1-843b-a166f093f7d4, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:08 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=915f0c36-854c-4ed1-843b-a166f093f7d4, duration=10s
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=d3eb07de-e002-4063-b0ae-f6421acea9f5, activeTasks=9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=d3eb07de-e002-4063-b0ae-f6421acea9f5
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=d3eb07de-e002-4063-b0ae-f6421acea9f5
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=74b3cc3d-3f5a-42b1-b1e5-419946d89719, retryCount=0, msgId=C0A8A00500015305068A9C2721B10034
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=74b3cc3d-3f5a-42b1-b1e5-419946d89719
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=74b3cc3d-3f5a-42b1-b1e5-419946d89719, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=74b3cc3d-3f5a-42b1-b1e5-419946d89719, duration=10s
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=6c1625ed-f5da-4910-99b0-88aaae7ba7e9, activeTasks=9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=6c1625ed-f5da-4910-99b0-88aaae7ba7e9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=6c1625ed-f5da-4910-99b0-88aaae7ba7e9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=3642795e-5251-4807-a436-7f2dda0bd414, retryCount=0, msgId=C0A8A00500015305068A9C2721D80035
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=3642795e-5251-4807-a436-7f2dda0bd414
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=3642795e-5251-4807-a436-7f2dda0bd414, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=3642795e-5251-4807-a436-7f2dda0bd414, duration=10s
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=057d9a92-87f2-4d50-a098-dff061398785, activeTasks=9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=057d9a92-87f2-4d50-a098-dff061398785
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=057d9a92-87f2-4d50-a098-dff061398785
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=b3ab2eb5-ea56-47a3-8bb8-6179d61e841d, retryCount=0, msgId=C0A8A00500015305068A9C2721FB0036
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=b3ab2eb5-ea56-47a3-8bb8-6179d61e841d
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=b3ab2eb5-ea56-47a3-8bb8-6179d61e841d, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=b3ab2eb5-ea56-47a3-8bb8-6179d61e841d, duration=10s
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=de5a11da-9d11-46fe-8379-56798d5deb1f, activeTasks=9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=de5a11da-9d11-46fe-8379-56798d5deb1f
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=de5a11da-9d11-46fe-8379-56798d5deb1f
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=f413ef93-bc76-41ff-b6b2-34a0ef8c4468, retryCount=0, msgId=C0A8A00500015305068A9C2722220037
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=f413ef93-bc76-41ff-b6b2-34a0ef8c4468
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=f413ef93-bc76-41ff-b6b2-34a0ef8c4468, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=f413ef93-bc76-41ff-b6b2-34a0ef8c4468, duration=10s
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=5b1abfe8-9b2d-4c12-bba1-81553495f294, activeTasks=9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=5b1abfe8-9b2d-4c12-bba1-81553495f294
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=5b1abfe8-9b2d-4c12-bba1-81553495f294
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=0768e22b-e4fc-4d5b-9d4e-3c170c74b0dd, retryCount=0, msgId=C0A8A00500015305068A9C27224E0038
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=0768e22b-e4fc-4d5b-9d4e-3c170c74b0dd
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=0768e22b-e4fc-4d5b-9d4e-3c170c74b0dd, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=0768e22b-e4fc-4d5b-9d4e-3c170c74b0dd, duration=10s
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=31c6007f-376d-4de8-89d7-23b6c25ce8ca, activeTasks=9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=31c6007f-376d-4de8-89d7-23b6c25ce8ca
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=31c6007f-376d-4de8-89d7-23b6c25ce8ca
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=f9fd71b5-f227-472c-93bc-d7761b9d03e6, retryCount=0, msgId=C0A8A00500015305068A9C2722750039
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=f9fd71b5-f227-472c-93bc-d7761b9d03e6
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=f9fd71b5-f227-472c-93bc-d7761b9d03e6, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=f9fd71b5-f227-472c-93bc-d7761b9d03e6, duration=10s
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=e4dcd3b8-6107-4a84-a757-d985249b32d8, activeTasks=9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=e4dcd3b8-6107-4a84-a757-d985249b32d8
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=e4dcd3b8-6107-4a84-a757-d985249b32d8
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=fb378fb9-363b-4ce5-8313-9b8dca988179, retryCount=0, msgId=C0A8A00500015305068A9C27229F003A
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=fb378fb9-363b-4ce5-8313-9b8dca988179
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=fb378fb9-363b-4ce5-8313-9b8dca988179, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=fb378fb9-363b-4ce5-8313-9b8dca988179, duration=10s
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=e8c460ad-57cc-40c0-81f2-8cecf70447b9, activeTasks=9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=e8c460ad-57cc-40c0-81f2-8cecf70447b9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=e8c460ad-57cc-40c0-81f2-8cecf70447b9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=a6fe6336-5aa8-4503-892e-482279cf3085, retryCount=0, msgId=C0A8A00500015305068A9C2722C2003B
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=a6fe6336-5aa8-4503-892e-482279cf3085
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=a6fe6336-5aa8-4503-892e-482279cf3085, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=a6fe6336-5aa8-4503-892e-482279cf3085, duration=10s
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=0b34be37-114c-4af3-a3bf-49038888ca22, activeTasks=9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=0b34be37-114c-4af3-a3bf-49038888ca22
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=0b34be37-114c-4af3-a3bf-49038888ca22
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=0278abcd-3cd7-4e9d-af93-3ba153ce9525, retryCount=0, msgId=C0A8A00500015305068A9C2722E6003C
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=0278abcd-3cd7-4e9d-af93-3ba153ce9525
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=0278abcd-3cd7-4e9d-af93-3ba153ce9525, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=0278abcd-3cd7-4e9d-af93-3ba153ce9525, duration=10s
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=915f0c36-854c-4ed1-843b-a166f093f7d4, activeTasks=9
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=915f0c36-854c-4ed1-843b-a166f093f7d4
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=915f0c36-854c-4ed1-843b-a166f093f7d4
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=c3f5e662-c08d-4a0c-8597-8b2bd7f067f3, retryCount=0, msgId=C0A8A00500015305068A9C27230C003D
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=c3f5e662-c08d-4a0c-8597-8b2bd7f067f3
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=c3f5e662-c08d-4a0c-8597-8b2bd7f067f3, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:18 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=c3f5e662-c08d-4a0c-8597-8b2bd7f067f3, duration=10s
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=74b3cc3d-3f5a-42b1-b1e5-419946d89719, activeTasks=9
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=74b3cc3d-3f5a-42b1-b1e5-419946d89719
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=74b3cc3d-3f5a-42b1-b1e5-419946d89719
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=de82bdde-8396-46c4-bff7-eb1c49e3a997, retryCount=0, msgId=C0A8A00500015305068A9C272330003E
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=de82bdde-8396-46c4-bff7-eb1c49e3a997
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=de82bdde-8396-46c4-bff7-eb1c49e3a997, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=de82bdde-8396-46c4-bff7-eb1c49e3a997, duration=10s
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=3642795e-5251-4807-a436-7f2dda0bd414, activeTasks=9
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=3642795e-5251-4807-a436-7f2dda0bd414
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=3642795e-5251-4807-a436-7f2dda0bd414
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=386e04e7-1eca-438d-861f-c3c1b56954e3, retryCount=0, msgId=C0A8A00500015305068A9C272356003F
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=386e04e7-1eca-438d-861f-c3c1b56954e3
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=386e04e7-1eca-438d-861f-c3c1b56954e3, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=386e04e7-1eca-438d-861f-c3c1b56954e3, duration=10s
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=b3ab2eb5-ea56-47a3-8bb8-6179d61e841d, activeTasks=9
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=b3ab2eb5-ea56-47a3-8bb8-6179d61e841d
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=b3ab2eb5-ea56-47a3-8bb8-6179d61e841d
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=3a7ac166-4b72-4cdd-b197-e075f6e9cb6e, retryCount=0, msgId=C0A8A00500015305068A9C2723790040
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=3a7ac166-4b72-4cdd-b197-e075f6e9cb6e
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=3a7ac166-4b72-4cdd-b197-e075f6e9cb6e, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=3a7ac166-4b72-4cdd-b197-e075f6e9cb6e, duration=10s
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=f413ef93-bc76-41ff-b6b2-34a0ef8c4468, activeTasks=9
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=f413ef93-bc76-41ff-b6b2-34a0ef8c4468
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=f413ef93-bc76-41ff-b6b2-34a0ef8c4468
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=08da6fc5-21a2-49c4-a6d7-1468ceed9729, retryCount=0, msgId=C0A8A00500015305068A9C27239C0041
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=08da6fc5-21a2-49c4-a6d7-1468ceed9729
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=08da6fc5-21a2-49c4-a6d7-1468ceed9729, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=08da6fc5-21a2-49c4-a6d7-1468ceed9729, duration=10s
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=0768e22b-e4fc-4d5b-9d4e-3c170c74b0dd, activeTasks=9
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=0768e22b-e4fc-4d5b-9d4e-3c170c74b0dd
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=0768e22b-e4fc-4d5b-9d4e-3c170c74b0dd
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=40b01fa1-806a-4bb8-8d9e-7c8ef3bb40a8, retryCount=0, msgId=C0A8A00500015305068A9C2723C30042
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=40b01fa1-806a-4bb8-8d9e-7c8ef3bb40a8
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=40b01fa1-806a-4bb8-8d9e-7c8ef3bb40a8, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=40b01fa1-806a-4bb8-8d9e-7c8ef3bb40a8, duration=10s
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=f9fd71b5-f227-472c-93bc-d7761b9d03e6, activeTasks=9
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=f9fd71b5-f227-472c-93bc-d7761b9d03e6
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=f9fd71b5-f227-472c-93bc-d7761b9d03e6
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=a2953cb1-916d-491b-bec0-c7aa33ba28f5, retryCount=0, msgId=C0A8A00500015305068A9C2723EC0043
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=a2953cb1-916d-491b-bec0-c7aa33ba28f5
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=a2953cb1-916d-491b-bec0-c7aa33ba28f5, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=a2953cb1-916d-491b-bec0-c7aa33ba28f5, duration=10s
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=fb378fb9-363b-4ce5-8313-9b8dca988179, activeTasks=9
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=fb378fb9-363b-4ce5-8313-9b8dca988179
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=fb378fb9-363b-4ce5-8313-9b8dca988179
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=dcf2e7f9-94f9-4dae-b26b-d674af91d9ea, retryCount=0, msgId=C0A8A00500015305068A9C27240F0044
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=dcf2e7f9-94f9-4dae-b26b-d674af91d9ea
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=dcf2e7f9-94f9-4dae-b26b-d674af91d9ea, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=dcf2e7f9-94f9-4dae-b26b-d674af91d9ea, duration=10s
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=a6fe6336-5aa8-4503-892e-482279cf3085, activeTasks=9
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=a6fe6336-5aa8-4503-892e-482279cf3085
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=a6fe6336-5aa8-4503-892e-482279cf3085
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=0ae8e4fa-77bd-4015-acaa-9ab1a76af8cc, retryCount=0, msgId=C0A8A00500015305068A9C2724330045
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=0ae8e4fa-77bd-4015-acaa-9ab1a76af8cc
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=0ae8e4fa-77bd-4015-acaa-9ab1a76af8cc, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=0ae8e4fa-77bd-4015-acaa-9ab1a76af8cc, duration=10s
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=0278abcd-3cd7-4e9d-af93-3ba153ce9525, activeTasks=9
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=0278abcd-3cd7-4e9d-af93-3ba153ce9525
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=0278abcd-3cd7-4e9d-af93-3ba153ce9525
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=57db33a9-1481-469d-8317-c36bb926e9d8, retryCount=0, msgId=C0A8A00500015305068A9C2724570046
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=57db33a9-1481-469d-8317-c36bb926e9d8
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=57db33a9-1481-469d-8317-c36bb926e9d8, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=57db33a9-1481-469d-8317-c36bb926e9d8, duration=10s
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=c3f5e662-c08d-4a0c-8597-8b2bd7f067f3, activeTasks=9
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=c3f5e662-c08d-4a0c-8597-8b2bd7f067f3
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=c3f5e662-c08d-4a0c-8597-8b2bd7f067f3
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=e75ff800-269d-4d26-8074-f787b5eefd35, retryCount=0, msgId=C0A8A00500015305068A9C27248C0047
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=e75ff800-269d-4d26-8074-f787b5eefd35
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=e75ff800-269d-4d26-8074-f787b5eefd35, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:28 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=e75ff800-269d-4d26-8074-f787b5eefd35, duration=10s
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=de82bdde-8396-46c4-bff7-eb1c49e3a997, activeTasks=9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=de82bdde-8396-46c4-bff7-eb1c49e3a997
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=de82bdde-8396-46c4-bff7-eb1c49e3a997
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=25da7c03-1866-49ca-85ae-633f36aeb45b, retryCount=0, msgId=C0A8A00500015305068A9C2724C90048
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=25da7c03-1866-49ca-85ae-633f36aeb45b
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=25da7c03-1866-49ca-85ae-633f36aeb45b, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=25da7c03-1866-49ca-85ae-633f36aeb45b, duration=10s
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=386e04e7-1eca-438d-861f-c3c1b56954e3, activeTasks=9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=386e04e7-1eca-438d-861f-c3c1b56954e3
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=386e04e7-1eca-438d-861f-c3c1b56954e3
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=7ba7ac0f-a05b-40fd-b35e-e0f3186663ec, retryCount=0, msgId=C0A8A00500015305068A9C2724EE0049
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=7ba7ac0f-a05b-40fd-b35e-e0f3186663ec
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=7ba7ac0f-a05b-40fd-b35e-e0f3186663ec, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=7ba7ac0f-a05b-40fd-b35e-e0f3186663ec, duration=10s
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=3a7ac166-4b72-4cdd-b197-e075f6e9cb6e, activeTasks=9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=3a7ac166-4b72-4cdd-b197-e075f6e9cb6e
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=3a7ac166-4b72-4cdd-b197-e075f6e9cb6e
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=13b06af8-ffbf-4b3e-acf8-d0cb622deff9, retryCount=0, msgId=C0A8A00500015305068A9C272510004A
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=13b06af8-ffbf-4b3e-acf8-d0cb622deff9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=13b06af8-ffbf-4b3e-acf8-d0cb622deff9, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=13b06af8-ffbf-4b3e-acf8-d0cb622deff9, duration=10s
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=08da6fc5-21a2-49c4-a6d7-1468ceed9729, activeTasks=9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=08da6fc5-21a2-49c4-a6d7-1468ceed9729
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=08da6fc5-21a2-49c4-a6d7-1468ceed9729
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=a5af659a-295a-458f-a4d4-7ba73868c439, retryCount=0, msgId=C0A8A00500015305068A9C272538004B
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=a5af659a-295a-458f-a4d4-7ba73868c439
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=a5af659a-295a-458f-a4d4-7ba73868c439, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=a5af659a-295a-458f-a4d4-7ba73868c439, duration=10s
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=40b01fa1-806a-4bb8-8d9e-7c8ef3bb40a8, activeTasks=9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=40b01fa1-806a-4bb8-8d9e-7c8ef3bb40a8
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=40b01fa1-806a-4bb8-8d9e-7c8ef3bb40a8
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=3e0f4864-dae5-42b4-aee2-eede8556cee1, retryCount=0, msgId=C0A8A00500015305068A9C272560004C
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=3e0f4864-dae5-42b4-aee2-eede8556cee1
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=3e0f4864-dae5-42b4-aee2-eede8556cee1, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=3e0f4864-dae5-42b4-aee2-eede8556cee1, duration=10s
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=a2953cb1-916d-491b-bec0-c7aa33ba28f5, activeTasks=9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=a2953cb1-916d-491b-bec0-c7aa33ba28f5
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=a2953cb1-916d-491b-bec0-c7aa33ba28f5
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=c3162f06-1bb2-453a-84c1-e640c9f36ca5, retryCount=0, msgId=C0A8A00500015305068A9C272582004D
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=c3162f06-1bb2-453a-84c1-e640c9f36ca5
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=c3162f06-1bb2-453a-84c1-e640c9f36ca5, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=c3162f06-1bb2-453a-84c1-e640c9f36ca5, duration=10s
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=dcf2e7f9-94f9-4dae-b26b-d674af91d9ea, activeTasks=9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=dcf2e7f9-94f9-4dae-b26b-d674af91d9ea
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=dcf2e7f9-94f9-4dae-b26b-d674af91d9ea
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=a2595de4-ca43-4ede-b057-a551af9ceba6, retryCount=0, msgId=C0A8A00500015305068A9C2725A8004E
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=a2595de4-ca43-4ede-b057-a551af9ceba6
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=a2595de4-ca43-4ede-b057-a551af9ceba6, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=a2595de4-ca43-4ede-b057-a551af9ceba6, duration=10s
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=0ae8e4fa-77bd-4015-acaa-9ab1a76af8cc, activeTasks=9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=0ae8e4fa-77bd-4015-acaa-9ab1a76af8cc
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=0ae8e4fa-77bd-4015-acaa-9ab1a76af8cc
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=3436caf6-288c-4d1f-94a1-0f14518a1b34, retryCount=0, msgId=C0A8A00500015305068A9C2725CA004F
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=3436caf6-288c-4d1f-94a1-0f14518a1b34
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=3436caf6-288c-4d1f-94a1-0f14518a1b34, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=3436caf6-288c-4d1f-94a1-0f14518a1b34, duration=10s
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=57db33a9-1481-469d-8317-c36bb926e9d8, activeTasks=9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=57db33a9-1481-469d-8317-c36bb926e9d8
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=57db33a9-1481-469d-8317-c36bb926e9d8
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=9756f29a-596e-4b84-a519-359b005f1d57, retryCount=0, msgId=C0A8A00500015305068A9C2725EE0050
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=9756f29a-596e-4b84-a519-359b005f1d57
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=9756f29a-596e-4b84-a519-359b005f1d57, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=9756f29a-596e-4b84-a519-359b005f1d57, duration=10s
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=e75ff800-269d-4d26-8074-f787b5eefd35, activeTasks=9
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=e75ff800-269d-4d26-8074-f787b5eefd35
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=e75ff800-269d-4d26-8074-f787b5eefd35
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=2f61655f-eea3-4a05-bfaf-35572580b6e6, retryCount=0, msgId=C0A8A00500015305068A9C2726120051
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=2f61655f-eea3-4a05-bfaf-35572580b6e6
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=2f61655f-eea3-4a05-bfaf-35572580b6e6, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:38 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=2f61655f-eea3-4a05-bfaf-35572580b6e6, duration=10s
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=25da7c03-1866-49ca-85ae-633f36aeb45b, activeTasks=9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=25da7c03-1866-49ca-85ae-633f36aeb45b
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=25da7c03-1866-49ca-85ae-633f36aeb45b
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=66d8033b-b66d-46e4-9cf2-cd3e5b80ffef, retryCount=0, msgId=C0A8A00500015305068A9C2726350052
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=66d8033b-b66d-46e4-9cf2-cd3e5b80ffef
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=66d8033b-b66d-46e4-9cf2-cd3e5b80ffef, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=66d8033b-b66d-46e4-9cf2-cd3e5b80ffef, duration=10s
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=7ba7ac0f-a05b-40fd-b35e-e0f3186663ec, activeTasks=9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=7ba7ac0f-a05b-40fd-b35e-e0f3186663ec
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=7ba7ac0f-a05b-40fd-b35e-e0f3186663ec
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=cdd335d0-970d-4c91-b3e6-5d442eba3c02, retryCount=0, msgId=C0A8A00500015305068A9C27265F0053
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=cdd335d0-970d-4c91-b3e6-5d442eba3c02
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=cdd335d0-970d-4c91-b3e6-5d442eba3c02, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=cdd335d0-970d-4c91-b3e6-5d442eba3c02, duration=10s
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=13b06af8-ffbf-4b3e-acf8-d0cb622deff9, activeTasks=9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=13b06af8-ffbf-4b3e-acf8-d0cb622deff9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=13b06af8-ffbf-4b3e-acf8-d0cb622deff9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=c7fe9ce8-7598-40d9-82d0-56dfff2f7b6e, retryCount=0, msgId=C0A8A00500015305068A9C2726870054
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=c7fe9ce8-7598-40d9-82d0-56dfff2f7b6e
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=c7fe9ce8-7598-40d9-82d0-56dfff2f7b6e, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=c7fe9ce8-7598-40d9-82d0-56dfff2f7b6e, duration=10s
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=a5af659a-295a-458f-a4d4-7ba73868c439, activeTasks=9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=a5af659a-295a-458f-a4d4-7ba73868c439
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=a5af659a-295a-458f-a4d4-7ba73868c439
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=1b48c412-a22a-45bc-aef9-1c1d8f07508b, retryCount=0, msgId=C0A8A00500015305068A9C2726AD0055
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=1b48c412-a22a-45bc-aef9-1c1d8f07508b
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=1b48c412-a22a-45bc-aef9-1c1d8f07508b, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=1b48c412-a22a-45bc-aef9-1c1d8f07508b, duration=10s
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=3e0f4864-dae5-42b4-aee2-eede8556cee1, activeTasks=9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=3e0f4864-dae5-42b4-aee2-eede8556cee1
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=3e0f4864-dae5-42b4-aee2-eede8556cee1
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=70b1f0a8-319c-47c2-a951-837edcb032fb, retryCount=0, msgId=C0A8A00500015305068A9C2726D10056
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=70b1f0a8-319c-47c2-a951-837edcb032fb
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=70b1f0a8-319c-47c2-a951-837edcb032fb, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=70b1f0a8-319c-47c2-a951-837edcb032fb, duration=10s
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=c3162f06-1bb2-453a-84c1-e640c9f36ca5, activeTasks=9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=c3162f06-1bb2-453a-84c1-e640c9f36ca5
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=c3162f06-1bb2-453a-84c1-e640c9f36ca5
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=5001f68a-b51c-48c5-822b-0fe291d71de2, retryCount=0, msgId=C0A8A00500015305068A9C2726F90057
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=5001f68a-b51c-48c5-822b-0fe291d71de2
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=5001f68a-b51c-48c5-822b-0fe291d71de2, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=5001f68a-b51c-48c5-822b-0fe291d71de2, duration=10s
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=a2595de4-ca43-4ede-b057-a551af9ceba6, activeTasks=9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=a2595de4-ca43-4ede-b057-a551af9ceba6
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=a2595de4-ca43-4ede-b057-a551af9ceba6
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=f675991a-0568-45d8-9053-922a38649218, retryCount=0, msgId=C0A8A00500015305068A9C2727250058
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=f675991a-0568-45d8-9053-922a38649218
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=f675991a-0568-45d8-9053-922a38649218, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=f675991a-0568-45d8-9053-922a38649218, duration=10s
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=3436caf6-288c-4d1f-94a1-0f14518a1b34, activeTasks=9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=3436caf6-288c-4d1f-94a1-0f14518a1b34
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=3436caf6-288c-4d1f-94a1-0f14518a1b34
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=7940c7f1-e5fc-4c80-8751-f8f0fec2a61f, retryCount=0, msgId=C0A8A00500015305068A9C2727480059
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=7940c7f1-e5fc-4c80-8751-f8f0fec2a61f
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=7940c7f1-e5fc-4c80-8751-f8f0fec2a61f, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=7940c7f1-e5fc-4c80-8751-f8f0fec2a61f, duration=10s
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=9756f29a-596e-4b84-a519-359b005f1d57, activeTasks=9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=9756f29a-596e-4b84-a519-359b005f1d57
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=9756f29a-596e-4b84-a519-359b005f1d57
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=b18d48ee-fd8b-4906-b947-ac56b8c1ffcf, retryCount=0, msgId=C0A8A00500015305068A9C27276A005A
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=b18d48ee-fd8b-4906-b947-ac56b8c1ffcf
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=b18d48ee-fd8b-4906-b947-ac56b8c1ffcf, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=b18d48ee-fd8b-4906-b947-ac56b8c1ffcf, duration=10s
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=2f61655f-eea3-4a05-bfaf-35572580b6e6, activeTasks=9
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=2f61655f-eea3-4a05-bfaf-35572580b6e6
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=2f61655f-eea3-4a05-bfaf-35572580b6e6
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=06753048-fcbb-4939-b76f-be8a1fb5a458, retryCount=0, msgId=C0A8A00500015305068A9C272799005B
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=06753048-fcbb-4939-b76f-be8a1fb5a458
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=06753048-fcbb-4939-b76f-be8a1fb5a458, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:48 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=06753048-fcbb-4939-b76f-be8a1fb5a458, duration=10s
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=66d8033b-b66d-46e4-9cf2-cd3e5b80ffef, activeTasks=9
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=66d8033b-b66d-46e4-9cf2-cd3e5b80ffef
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=cdd335d0-970d-4c91-b3e6-5d442eba3c02, activeTasks=8
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=cdd335d0-970d-4c91-b3e6-5d442eba3c02
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=66d8033b-b66d-46e4-9cf2-cd3e5b80ffef
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=cdd335d0-970d-4c91-b3e6-5d442eba3c02
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=d4aea326-17e9-4dcc-af1c-ad26d988fa19, retryCount=0, msgId=C0A8A00500015305068A9C2727C5005C
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=b2ff8de9-cd4e-4c5d-92b2-3c25f9f74d13, retryCount=0, msgId=C0A8A00500015305068A9C2727F3005D
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=d4aea326-17e9-4dcc-af1c-ad26d988fa19
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=b2ff8de9-cd4e-4c5d-92b2-3c25f9f74d13
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=b2ff8de9-cd4e-4c5d-92b2-3c25f9f74d13, taskType=DATA_EXPORT, activeTasks=9
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=b2ff8de9-cd4e-4c5d-92b2-3c25f9f74d13, duration=10s
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=d4aea326-17e9-4dcc-af1c-ad26d988fa19, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=d4aea326-17e9-4dcc-af1c-ad26d988fa19, duration=10s
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=c7fe9ce8-7598-40d9-82d0-56dfff2f7b6e, activeTasks=9
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=c7fe9ce8-7598-40d9-82d0-56dfff2f7b6e
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=c7fe9ce8-7598-40d9-82d0-56dfff2f7b6e
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=9d8df021-146f-44df-84ed-2db48ecc65af, retryCount=0, msgId=C0A8A00500015305068A9C27281A005E
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=9d8df021-146f-44df-84ed-2db48ecc65af
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=9d8df021-146f-44df-84ed-2db48ecc65af, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=9d8df021-146f-44df-84ed-2db48ecc65af, duration=10s
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=1b48c412-a22a-45bc-aef9-1c1d8f07508b, activeTasks=9
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=1b48c412-a22a-45bc-aef9-1c1d8f07508b
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=1b48c412-a22a-45bc-aef9-1c1d8f07508b
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=c4b4de93-d106-40bf-b09f-8c4872e3e606, retryCount=0, msgId=C0A8A00500015305068A9C272842005F
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=c4b4de93-d106-40bf-b09f-8c4872e3e606
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=c4b4de93-d106-40bf-b09f-8c4872e3e606, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=c4b4de93-d106-40bf-b09f-8c4872e3e606, duration=10s
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=70b1f0a8-319c-47c2-a951-837edcb032fb, activeTasks=9
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=70b1f0a8-319c-47c2-a951-837edcb032fb
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=70b1f0a8-319c-47c2-a951-837edcb032fb
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=1253c86b-f9bd-48bd-a3d3-0f3a3b0ecffc, retryCount=0, msgId=C0A8A00500015305068A9C27286C0060
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=1253c86b-f9bd-48bd-a3d3-0f3a3b0ecffc
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=1253c86b-f9bd-48bd-a3d3-0f3a3b0ecffc, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=1253c86b-f9bd-48bd-a3d3-0f3a3b0ecffc, duration=10s
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=5001f68a-b51c-48c5-822b-0fe291d71de2, activeTasks=9
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=5001f68a-b51c-48c5-822b-0fe291d71de2
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=5001f68a-b51c-48c5-822b-0fe291d71de2
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=c6e99456-c2cb-4a45-8ce2-05842d0f43ea, retryCount=0, msgId=C0A8A00500015305068A9C27289A0061
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=c6e99456-c2cb-4a45-8ce2-05842d0f43ea
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=c6e99456-c2cb-4a45-8ce2-05842d0f43ea, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=c6e99456-c2cb-4a45-8ce2-05842d0f43ea, duration=10s
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=f675991a-0568-45d8-9053-922a38649218, activeTasks=9
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=f675991a-0568-45d8-9053-922a38649218
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=f675991a-0568-45d8-9053-922a38649218
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=1f0a6a6c-9333-43cf-b904-337faa81f9e1, retryCount=0, msgId=C0A8A00500015305068A9C2728C00062
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=1f0a6a6c-9333-43cf-b904-337faa81f9e1
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=1f0a6a6c-9333-43cf-b904-337faa81f9e1, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=1f0a6a6c-9333-43cf-b904-337faa81f9e1, duration=10s
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=7940c7f1-e5fc-4c80-8751-f8f0fec2a61f, activeTasks=9
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=7940c7f1-e5fc-4c80-8751-f8f0fec2a61f
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=7940c7f1-e5fc-4c80-8751-f8f0fec2a61f
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=b65303cf-3932-41c6-b909-ae6c4ebf9bd3, retryCount=0, msgId=C0A8A00500015305068A9C2728ED0063
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=b65303cf-3932-41c6-b909-ae6c4ebf9bd3
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=b65303cf-3932-41c6-b909-ae6c4ebf9bd3, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=b65303cf-3932-41c6-b909-ae6c4ebf9bd3, duration=10s
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=b18d48ee-fd8b-4906-b947-ac56b8c1ffcf, activeTasks=9
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=b18d48ee-fd8b-4906-b947-ac56b8c1ffcf
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=b18d48ee-fd8b-4906-b947-ac56b8c1ffcf
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=2039dcb1-4724-43a3-9e77-cf068adf60b8, retryCount=0, msgId=C0A8A00500015305068A9C2729140064
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=2039dcb1-4724-43a3-9e77-cf068adf60b8
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=2039dcb1-4724-43a3-9e77-cf068adf60b8, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=2039dcb1-4724-43a3-9e77-cf068adf60b8, duration=10s
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=06753048-fcbb-4939-b76f-be8a1fb5a458, activeTasks=9
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=06753048-fcbb-4939-b76f-be8a1fb5a458
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=06753048-fcbb-4939-b76f-be8a1fb5a458
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Processing message: taskId=de3a0005-3495-4c04-b377-b5be84d09d5e, retryCount=0, msgId=C0A8A00500015305068A9C2729370065
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as RUNNING: taskId=de3a0005-3495-4c04-b377-b5be84d09d5e
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task started: taskId=de3a0005-3495-4c04-b377-b5be84d09d5e, taskType=DATA_EXPORT, activeTasks=10
+2026-01-31 07:44:58 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Handling data export: taskId=de3a0005-3495-4c04-b377-b5be84d09d5e, duration=10s
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_3] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=b2ff8de9-cd4e-4c5d-92b2-3c25f9f74d13, activeTasks=9
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=b2ff8de9-cd4e-4c5d-92b2-3c25f9f74d13
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_3] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=b2ff8de9-cd4e-4c5d-92b2-3c25f9f74d13
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_4] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=d4aea326-17e9-4dcc-af1c-ad26d988fa19, activeTasks=8
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=d4aea326-17e9-4dcc-af1c-ad26d988fa19
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_4] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=d4aea326-17e9-4dcc-af1c-ad26d988fa19
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_5] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=9d8df021-146f-44df-84ed-2db48ecc65af, activeTasks=7
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=9d8df021-146f-44df-84ed-2db48ecc65af
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_5] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=9d8df021-146f-44df-84ed-2db48ecc65af
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_6] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=c4b4de93-d106-40bf-b09f-8c4872e3e606, activeTasks=6
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=c4b4de93-d106-40bf-b09f-8c4872e3e606
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_6] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=c4b4de93-d106-40bf-b09f-8c4872e3e606
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_7] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=1253c86b-f9bd-48bd-a3d3-0f3a3b0ecffc, activeTasks=5
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=1253c86b-f9bd-48bd-a3d3-0f3a3b0ecffc
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_7] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=1253c86b-f9bd-48bd-a3d3-0f3a3b0ecffc
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_8] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=c6e99456-c2cb-4a45-8ce2-05842d0f43ea, activeTasks=4
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=c6e99456-c2cb-4a45-8ce2-05842d0f43ea
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_8] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=c6e99456-c2cb-4a45-8ce2-05842d0f43ea
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_9] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=1f0a6a6c-9333-43cf-b904-337faa81f9e1, activeTasks=3
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=1f0a6a6c-9333-43cf-b904-337faa81f9e1
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_9] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=1f0a6a6c-9333-43cf-b904-337faa81f9e1
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_10] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=b65303cf-3932-41c6-b909-ae6c4ebf9bd3, activeTasks=2
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=b65303cf-3932-41c6-b909-ae6c4ebf9bd3
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_10] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=b65303cf-3932-41c6-b909-ae6c4ebf9bd3
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_2] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=2039dcb1-4724-43a3-9e77-cf068adf60b8, activeTasks=1
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=2039dcb1-4724-43a3-9e77-cf068adf60b8
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_2] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=2039dcb1-4724-43a3-9e77-cf068adf60b8
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_1] INFO  c.e.t.service.TaskExecutionService - Task executed successfully: taskId=de3a0005-3495-4c04-b377-b5be84d09d5e, activeTasks=0
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.service.TaskService - Task marked as SUCCESS: taskId=de3a0005-3495-4c04-b377-b5be84d09d5e
+2026-01-31 07:45:08 [ConsumeMessageThread_task-consumer-group_1] INFO  c.example.task.consumer.TaskConsumer - Task processed successfully: taskId=de3a0005-3495-4c04-b377-b5be84d09d5e

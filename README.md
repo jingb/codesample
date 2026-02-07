@@ -132,11 +132,9 @@ task-async-service/
 
 ### 请求流程
 
-```
-客户端 → POST /tasks → TaskService → RocketMQ → 消费者（固定 10 线程）→ TaskExecutionService
-                                      ↓
-                                    返回 taskId
-```
+![请求流程](diagrams/request-flow-overview.drawio)
+
+*编辑：[request-flow-overview.drawio](diagrams/request-flow-overview.drawio)*
 
 ### 恒定吞吐量机制
 

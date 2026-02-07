@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -18,8 +19,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class TaskExecutionService {
 
+    private final Random random = new Random();
+
     @Value("${task.processing.duration-seconds:10}")
     private int taskDurationSeconds;
+
+    @Value("${task.processing.failed-rate:0.0}")
+    private double failedRate;
 
     // Track active tasks for monitoring concurrency
     private final AtomicInteger activeTasks = new AtomicInteger(0);
@@ -32,16 +38,39 @@ public class TaskExecutionService {
         log.info("Task started: taskId={}, taskType={}, activeTasks={}", task.getId(), task.getTaskType(), currentActive);
 
         try {
+            // Simulate random failure based on configured rate
+            if (shouldFail()) {
+                activeTasks.decrementAndGet();
+                log.warn("Task failed (simulated): taskId={}, failedRate={}", task.getId(), failedRate);
+                throw new RuntimeException("Simulated task failure for testing");
+            }
+
             Map<String, Object> result = handleDataExport(task);
 
             log.info("Task executed successfully: taskId={}, activeTasks={}", task.getId(), activeTasks.decrementAndGet());
             return result;
 
+        } catch (RuntimeException e) {
+            // Re-throw RuntimeException as-is (includes our simulated failure)
+            throw e;
         } catch (Exception e) {
             activeTasks.decrementAndGet();
             log.error("Task execution failed: taskId={}", task.getId(), e);
             throw new RuntimeException("Task execution failed: " + e.getMessage(), e);
         }
+    }
+
+    /**
+     * Determine if task should fail based on configured failure rate
+     */
+    private boolean shouldFail() {
+        if (failedRate <= 0.0) {
+            return false;
+        }
+        if (failedRate >= 1.0) {
+            return true;
+        }
+        return random.nextDouble() < failedRate;
     }
 
     /**

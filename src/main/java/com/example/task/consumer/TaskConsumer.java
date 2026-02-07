@@ -45,6 +45,9 @@ public class TaskConsumer {
     @Value("${rocketmq.consumer.consume-thread-max:10}")
     private int consumeThreadMax;
 
+    @Value("${task.processing.max-retry-times:16}")
+    private int maxRetryTimes;
+
     private final TaskService taskService;
     private final TaskExecutionService taskExecutionService;
     private final ObjectMapper objectMapper;
@@ -74,6 +77,10 @@ public class TaskConsumer {
         // 3. Configure thread pool (this controls the constant processing rate!)
         consumer.setConsumeThreadMin(consumeThreadMin);
         consumer.setConsumeThreadMax(consumeThreadMax);
+
+        // 3.1. Configure max retry times
+        consumer.setMaxReconsumeTimes(maxRetryTimes);
+        log.info("Configured max retry times: {}", maxRetryTimes);
 
         // IMPORTANT: This is key to achieving constant throughput
         // With fixed thread pool size, the consumer can only process
@@ -114,8 +121,8 @@ public class TaskConsumer {
         // 6. Start consumer
         consumer.start();
 
-        log.info("TaskConsumer started successfully: group={}, topic={}, threads=[{}, {}]",
-                consumerGroup, topic, consumeThreadMin, consumeThreadMax);
+        log.info("TaskConsumer started successfully: group={}, topic={}, threads=[{}, {}], maxRetryTimes={}",
+                consumerGroup, topic, consumeThreadMin, consumeThreadMax, maxRetryTimes);
     }
 
     /**
@@ -129,8 +136,14 @@ public class TaskConsumer {
             TaskMessage taskMessage = objectMapper.readValue(json, TaskMessage.class);
             taskId = taskMessage.getTaskId();
 
-            log.info("Processing message: taskId={}, retryCount={}, msgId={}",
-                    taskId, taskMessage.getRetryCount(), message.getMsgId());
+            int currentRetryCount = message.getReconsumeTimes();
+            log.info("Processing message: taskId={}, reconsumeTimes={}, msgId={}",
+                    taskId, currentRetryCount, message.getMsgId());
+
+            // Sync retry count from RocketMQ
+            if (currentRetryCount > 0) {
+                taskService.incrementRetryCount(taskId);
+            }
 
             // 2. Mark task as RUNNING
             taskService.markAsRunning(taskId);

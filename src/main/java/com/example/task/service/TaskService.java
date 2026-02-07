@@ -127,6 +127,20 @@ public class TaskService {
     }
 
     /**
+     * Increment retry count
+     */
+    @Transactional
+    public void incrementRetryCount(String taskId) {
+        taskRepository.findById(taskId).ifPresent(task -> {
+            int newCount = task.getRetryCount() + 1;
+            task.setRetryCount(newCount);
+            taskRepository.save(task);
+
+            log.info("Task retry count incremented: taskId={}, retryCount={}", taskId, newCount);
+        });
+    }
+
+    /**
      * Update task progress
      */
     @Transactional
